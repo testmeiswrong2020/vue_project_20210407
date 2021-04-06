@@ -6,13 +6,13 @@
       <div class="col-md-12 col-lg-12">
    <ul class="nav  d-flex justify-content-around">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Active</a>
+          <a class="nav-link active" href="#">購買商品</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#">常見問題</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#">門市位置</a>
         </li>
         <li class="nav-item">
           <a
@@ -31,7 +31,7 @@
 				<div class="col-md-12 text-center">
 					<p>
 						<small class="block">&copy; 2021. All Rights Reserved.</small> 
-						<small class="block">Designed by <a href="#" target="_blank">Anya</a> Demo Images: <a href="http://blog.gessato.com/" target="_blank">Gessato</a> &amp; <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
+						<small class="block">Designed by <a href="#" target="_blank">Anya</a> Demo Images: <a href="https://www.pexels.com/" target="_blank">Pexels</a> &amp; <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
 					</p>
 					<p>
 						<ul class="fh5co-social-icons">

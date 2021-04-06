@@ -1,9 +1,7 @@
 <template>
-  <div>
-    <div class="">
-      <!--container-->
-      <loading :active.sync="isLoading"></loading>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<div>
+   <!-- <loading :active.sync="isLoading"></loading> -->
+      <nav class="navbar navbar-expand-lg navbar-light ">
         <router-link to="/" class="nav-link">
           <h3 class="text-dark font-weight-bold">Luxury</h3>
         </router-link>
@@ -32,7 +30,7 @@
                   data-flip="false"
                   @click="getCart"
                 >
-                  <i class="fas fa-shopping-cart text-dark fa-2x"></i>
+                  <i class="fas fa-shopping-cart  fa-lg" style="color:#704214"></i>
                   <span class="badge badge-pill badge-danger">9</span>
                   <span class="sr-only">unread messages</span>
                 </button>
@@ -86,12 +84,9 @@
           </ul>
         </div>
       </nav>
-    </div>
-  </div>
+</div>
 </template>
-
 <script>
-import $ from "jquery";
 export default {
   data() {
     return {
@@ -122,26 +117,24 @@ export default {
     getCart() {
       const vm = this;
       const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`;
-      vm.isLoading = true;
+      // vm.isLoading = true;
       this.$http.get(url).then((response) => {
         console.log("getCart", response.data);
         vm.cart = response.data.data;
-        vm.isLoading = false;
+        // vm.isLoading = false;
       });
     },
     //移除購物車內容
     removeCartItem(product_id) {
       const vm = this;
       const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart/${product_id}`;
-      vm.isLoading = true;
+      // vm.isLoading = true;
       this.$http.delete(url).then((response) => {
         console.log("removeCartItem", response.data);
         vm.getCart();
-        vm.isLoading = false;
+        // vm.isLoading = false;
       });
     },
-
-    //
   },
   //一進畫面要觸發的事件就放created內
   // created() {

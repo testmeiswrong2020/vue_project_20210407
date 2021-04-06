@@ -1,12 +1,9 @@
 <template>
-
-          <div class="jumbotron jumbotron-fluid jumbotron-bg d-flex align-items-end">
-    <div class="container">
-      <div class="p-3 bg-lighter">
-        <h1 class="display-3 font-weight-bold">買到剁手手！最後出清</h1>
-        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
-      </div>
-    </div>
-  </div>
- 
+    <div class="row bg-light d-flex justify-content-center pt-5">
+				<div class="text-center fh5co-heading">
+					<!-- <span>Cool Stuff</span> -->
+					<h1>新款收納系列</h1>
+					<h6>如果您正尋找兼具設計又收納方便的傢俱，無需再躊躇。我們剛剛推出這些令人興奮的設計——現代家居的絕配。</h6>
+				</div>
+			</div>
 </template>

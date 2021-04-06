@@ -4,7 +4,7 @@
     <Alert/>
     <div class="container-fluid">
       <div class="row">
-        <Sidebar/>
+        <AdminSidebar/>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
           <!--router-view是巢狀的-->
           <router-view></router-view>
@@ -15,13 +15,13 @@
 </template>
 
 <script>
-import Sidebar from "./Sidebar.vue";
+import AdminSidebar from "./AdminSidebar.vue";
 import Navbar from "./AdminNavbar.vue";
 import Alert from "./AlertMessage.vue";
 
 export default {
   components: {
-    Sidebar,
+    AdminSidebar,
     Navbar,
     Alert,
   },

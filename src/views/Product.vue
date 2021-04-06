@@ -1,195 +1,83 @@
 <template>
   <div>
     <loading :active.sync="isLoading"></loading>
-    <jumbotron></jumbotron>
-    <div class="container main-contant mb-1">
+    <Jumbotron/>
+    <div class="container main-contant mb-5">
       <div class="row">
         <div class="col-md-3">
           <!-- 左側選單 (List group) -->
-          <div class="list-group sticky-top">
-            <a
-              class="list-group-item list-group-item-action active"
-              data-toggle="list"
-              href="#list-gold"
-            >
-              <i class="fa fa-suitcase" aria-hidden="true"></i> 金牌專賣店</a
-            >
-            <a
-              class="list-group-item list-group-item-action"
-              data-toggle="list"
-              href="#list-gift"
-            >
-              <i class="fa fa-gift" aria-hidden="true"></i> 禮品區</a
-            >
-            <a href="#" class="list-group-item list-group-item-action disabled">
-              <i class="fa fa-film" aria-hidden="true"></i> 影音商品</a
-            >
-            <a href="#" class="list-group-item list-group-item-action disabled">
-              <i class="fa fa-paw" aria-hidden="true"></i> 寵物專用</a
-            >
-            <a href="#" class="list-group-item list-group-item-action disabled">
-              <i class="fa fa-tree" aria-hidden="true"></i> 居家環境</a
-            >
-          </div>
+          <ProductSidebar/>
         </div>
         <div class="col-md-9">
-          <div class="d-flex mb-4">
-            <!-- Search bar -->
-            <form class="form-inline my-3 my-lg-0">
-              <div class="input-group">
-                <input
-                  class="form-control"
-                  type="text"
-                  placeholder="Search"
-                  aria-label="Search"
-                />
-                <div class="input-group-append">
-                  <button class="btn btn-outline-warning" type="submit">
-                    <i class="fa fa-search" aria-hidden="true"></i> Search
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-          <!-- 主要商品列表 (Card) -->
-          <div class="tab-content">
-            <div class="tab-pane active" id="list-gold">
-              <div class="row">
-                <!-- 金牌 -->
-                <div
-                  class="col-md-4 mb-4"
-                  v-for="item in products"
-                  :key="item.id"
-                >
-                  <div class="card border-0 box-shadow text-left h-100">
-                    <img
-                      class="card-img-top"
-                      :src="`${item.imageUrl}`"
-                      alt="Card image cap"
-                    />
-                    <div class="card-body">
-                      <span class="badge badge-secondary float-right ml-2">{{
-                        item.category
-                      }}</span>
-                      <h5 class="card-title">
-                        <a href="#" class="text-dark">{{ item.title }}</a>
-                      </h5>
-                      <p class="card-text">{{ item.content }}</p>
+          <div class="">
+            <!--container-->
+            <div class="row">
+                <div class="col-md-6">
+                <div class="card shadow rounded-0 mb-3">
+                  <div class="text-center animate-box">
+                    <div class="product">
                       <div
-                        class="d-flex justify-content-between align-items-baseline"
+                        class="product-grid"
+                        style="background-image: url(images/product-1.jpg)"
                       >
-                        <div class="h5" v-if="!item.price">
-                          {{ item.origin_price }}
+                        <div class="inner">
+                          <p>
+                            <button class="btn btn-outline-light">
+                              更多細節
+                            </button>
+                          </p>
                         </div>
-                        <del class="h6" v-if="item.price">{{
-                          item.origin_price
-                        }}</del>
-                        <div class="h5" v-if="item.price">{{ item.price }}</div>
                       </div>
                     </div>
-                    <div class="card-footer border-top-0 bg-white">
-                      <div class="d-flex">
-  <button
-                        type="button"
-                        class="btn btn-outline-secondary btn-sm"
-                        @click="getProduct(item.id)"
-                      >
-                        <i
-                          class="fas fa-spinner fa-spin"
-                          v-if="status.loadingItem === item.id"
-                        ></i>
-                        查看更多
-                      </button>
-                      <button
-                        type="button"
-                        class="btn btn-outline-danger btn-sm ml-auto"
-                        @click="addToCart(item.id)"
-                      >
-                        <i
-                          class="fas fa-spinner fa-spin"
-                          v-if="status.loadingItem === item.id"
-                        ></i>
-                        加到購物車
-                      </button>
+                    <div class="product mt-n3">
+                      <div class="desc mx-3">
+                        <div class="d-flex justify-content-between">
+                          <h3>Hauteville</h3>
+                          <span class="price">$350</span>
+                        </div>
+                        <div class="d-flex justify-content-between mt-n2">
+                          <h3>Hauteville</h3>
+                          <span class="price">$350</span>
+                        </div>
+                        <div class="float-right">
+                          <button type="button" class="btn btn-primary btn-sm">
+                            加入購物車
+                          </button>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <!-- pagination -->
-              <nav aria-label="Page navigation" class="my-5">
-                <ul class="pagination justify-content-center">
-                  <li
-                    class="page-item"
-                    :class="{ disabled: !pagination.has_pre }"
-                  >
-                    <span
-                      class="page-link"
-                      @click.prevent="getProducts(pagination.current_page - 1)"
-                      >Previous</span
-                    >
-                  </li>
-                  <li
-                    class="page-item"
-                    :class="{ active: pagination.current_page === page }"
-                    v-for="page in pagination.total_pages"
-                    :key="page"
-                  >
-                    <a
-                      class="page-link"
-                      href="#"
-                      @click.prevent="getProducts(page)"
-                      >{{ page }}</a
-                    >
-                  </li>
-                  <li
-                    class="page-item"
-                    :class="{ disabled: !pagination.has_next }"
-                  >
-                    <a
-                      class="page-link"
-                      href="#"
-                      @click.prevent="getProducts(pagination.current_page + 1)"
-                      >Next</a
-                    >
-                  </li>
-                </ul>
-              </nav>
+          
+      
+              <!-- <div class="col-md-4 text-center animate-box">
+            <div class="product">
+              <div
+                class="product-grid"
+                style="background-image: url(images/product-1.jpg)"
+              >
+                <div class="inner">
+                  <p>
+                    <a href="single.html" class="icon"
+                      ><i class="fas fa-shopping-cart"></i
+                    ></a>
+                    <a href="single.html" class="icon"
+                      ><i class="far fa-eye"></i
+                    ></a>
+                  </p>
+                </div>
+              </div>
+              <div class="desc">
+                <h3>
+                  <a href="single.html">Hauteville Concrete Rocking Chair</a>
+                </h3>
+                <span class="price">$350</span>
+              </div>
             </div>
-
-            <div class="tab-pane" id="list-gift">
-              <div class="row align-items-stretch">
-                <!-- 禮品 -->
-                <div class="col-md-4 mb-4">
-                  <div class="card border-0 box-shadow text-center h-100">
-                    <img
-                      class="card-img-top"
-                      src="https://images.unsplash.com/photo-1482173074468-5b323335debe?w=1350"
-                      alt="Card image cap"
-                    />
-                    <div class="card-body">
-                      <h4 class="card-title">超精緻禮物</h4>
-                      <p class="card-text">
-                        This is a longer card with supporting text below as a
-                        natural lead-in to additional content. This content is a
-                        little bit longer.
-                      </p>
-                    </div>
-                    <div class="card-footer border-top-0 bg-white">
-                      <a
-                        href="#"
-                        class="btn btn-outline-secondary btn-block btn-sm"
-                      >
-                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
-                        搶購去
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          </div> -->
             </div>
           </div>
-          <!-- tab-content end -->
         </div>
       </div>
     </div>
@@ -198,10 +86,12 @@
 
 <script>
 import $ from "jquery";
-import jumbotron from "../components/Jumbotron.vue";
+import Jumbotron from "../components/Jumbotron.vue";
+import ProductSidebar from "../components/ProductSidebar.vue";
 export default {
   components: {
-    jumbotron,
+    Jumbotron,
+    ProductSidebar,
   },
   data() {
     return {

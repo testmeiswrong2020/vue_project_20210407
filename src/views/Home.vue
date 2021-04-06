@@ -179,18 +179,18 @@ export default {
       slideContent: {
              0: {
 			imgUrl:
-            "images/img_bg_12.jpg",
+            "images/img_bg_2.jpg",
           title: "Yves Saint Laurent",
        
         },
         1: {
           imgUrl:
-	     "images/img_bg_11.jpg",
+	     "images/img_bg_1.jpg",
           title: "Prada",
         },
         2: {
           imgUrl:
-            "images/img_bg_13.jpg",
+            "images/img_bg_3.jpg",
           title: "Rolex",
         },
       }

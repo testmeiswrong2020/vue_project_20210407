@@ -2,7 +2,7 @@
   <div>
     <!--在此插入loading特效-->
     <loading :active.sync="isLoading"></loading>
-    <side-bar></side-bar>
+    <AdminSidebar/>
     <div class="mt-4">
       <button class="btn float-right mb-3 btn-primary" @click="openModal(true)">
         建立新的產品
@@ -282,11 +282,11 @@
 
 <script>
 import $ from "jquery";
-import sideBar from "../components/Sidebar.vue";
+import AdminSidebar from "../components/AdminSidebar.vue";
 export default {
     components: {
     // navBar,
-    sideBar,
+    AdminSidebar,
     // footerContent,
     // Alert,
   },

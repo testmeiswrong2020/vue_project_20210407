@@ -13,7 +13,7 @@ export default new VueRouter({
     {
       //網頁路徑亂輸入的話，一律導到login畫面
       path: '*',
-      // redirect: 'product'
+      redirect: '/home'
     },
 
     //登入後畫面router
@@ -56,7 +56,7 @@ export default new VueRouter({
         //登入前畫面router
     {
       path: '/',
-      // redirect: '/',
+      redirect: '/home',
       name: 'Index',
       component: () => import('./views/Index.vue'),
       children: [
@@ -65,26 +65,31 @@ export default new VueRouter({
           name: 'Home',
           component: () => import('./views/Home.vue'),
         },
-      //   {
-      //     path: 'product_detail',
-      //     name: 'ProductDetail',
-      //     component: () => import('./views/ProductDetail.vue'),
-      //   },
-      //   {
-      //     path: 'checkout',
-      //     name: 'Checkout',
-      //     component: () => import('./views/Checkout.vue'),
-      //   },
-      //   {
-      //     path: 'customer_order',
-      //     name: 'CustomerOrder',
-      //     component: () => import('./views/CustomerOrder.vue'),
-      //   },
-      //   {
-      //     path: 'customer_checkout/:orderId',
-      //     name: 'CustomerCheckout',
-      //     component: () => import('./views/CustomerCheckout.vue'),
-      //   },
+        {
+          path: 'product',
+          name: 'Product',
+          component: () => import('./views/Product.vue'),
+        },
+        {
+          path: 'product_detail',
+          name: 'ProductDetail',
+          component: () => import('./views/ProductDetail.vue'),
+        },
+        {
+          path: 'checkout',
+          name: 'Checkout',
+          component: () => import('./views/Checkout.vue'),
+        },
+        {
+          path: 'customer_order',
+          name: 'CustomerOrder',
+          component: () => import('./views/CustomerOrder.vue'),
+        },
+        {
+          path: 'customer_checkout/:orderId',
+          name: 'CustomerCheckout',
+          component: () => import('./views/CustomerCheckout.vue'),
+        },
 
       ],
     },
