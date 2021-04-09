@@ -8,7 +8,7 @@
       <div class="row no-gutters">
            <!-- <div class="col-md-6"  v-for="(item,index) in cardContent" :key="index">
           <div class="home-products-items" :class="{'negative-margin':index % 2!=0}">
-            <router-link to="/products">
+            <router-link to="/product">
               <div  class="img"  
               :style="`background-image:url('${item.imgUrl}')`"
               ></div>
@@ -21,7 +21,7 @@
         </div> -->
         <div class="col-md-6">
           <div class="home-products-items">
-            <router-link to="/products">
+            <router-link to="/product">
               <div
                 class="img"
                 style="background-image:url('https://images.unsplash.com/photo-1540574163026-643ea20ade25?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80')"
@@ -35,21 +35,21 @@
         </div>
         <div class="col-md-6">
           <div class="home-products-items negative-margin">
-            <router-link to="/products">
+            <router-link to="/product">
               <div
                 class="img"
                 style="background-image:url('images/category_1.jpg')"
               ></div>
               <span class="home-products-title">
                 <div class="eng">Watch</div>
-                <h3 class="text-white">– 手錶</h3>
+                <h3 class="text-white">– 腕錶</h3>
               </span>
             </router-link>
           </div>
         </div>
         <div class="col-md-6">
           <div class="home-products-items">
-            <router-link to="/products">
+            <router-link to="/product">
               <div
                 class="img"
                 style="background-image:url('images/category_2.jpg')"
@@ -63,14 +63,14 @@
         </div>
         <div class="col-md-6">
           <div class="home-products-items negative-margin">
-            <router-link to="/products">
+            <router-link to="/product">
               <div
                 class="img"
                 style="background-image:url('https://images.unsplash.com/photo-1532588213355-52317771cce6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80')"
               ></div>
               <span class="home-products-title">
-                <div class="eng">Clothing</div>
-                <h3 class="text-white">– 精品服飾</h3>
+                <div class="eng">Shoe</div>
+                <h3 class="text-white">– 鞋履</h3>
               </span>
             </router-link>
           </div>

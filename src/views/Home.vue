@@ -25,7 +25,7 @@
         <slide v-for="(item,index) in slideContent" :key="index">
           <div class="carousel-img" :style="`background-image:url('${item.imgUrl}')`">
             <div class="carousel-slide-title d-flex align-items-end">
-              <p :id="`title-${index}`" class="pl-md-9 pb-md-9 pl-5 pb-5 mb-0">{{item.title}}</p>
+              <p :id="`title-${index}`" class="font-italic pl-md-9 pb-md-9 pl-5 pb-5 mb-0">{{item.title}}</p>
             </div>
           </div>
         </slide>

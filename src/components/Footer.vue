@@ -1,7 +1,6 @@
 <template>
-   <div>
      	<footer id="fh5co-footer" role="contentinfo">
-		<div class="container">
+		<div class="container mt-n5">
 	  <div class="row">
       <div class="col-md-12 col-lg-12">
    <ul class="nav  d-flex justify-content-around">
@@ -35,7 +34,7 @@
 					</p>
 					<p>
 						<ul class="fh5co-social-icons">
-							<li><a href="#"><i  class="fab  fa-twitter"></i></a></li>
+							<li><a href="#"><i  class="fab fa-twitter"></i></a></li>
 							<li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
 							<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
 							<li><a href="#"><i class="fab fa-instagram-square"></i></a></li>
@@ -46,5 +45,4 @@
 
 		</div>
 	</footer>
-   </div>
 </template>

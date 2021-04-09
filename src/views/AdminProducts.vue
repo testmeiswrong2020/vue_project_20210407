@@ -105,7 +105,7 @@
                 <div class="form-group">
                   <label for="customFile"
                     >或 上傳圖片
-                    <i :class="{'fa fa-spinner fa-spin':status.fileUploading}"  
+                    <i :class="{'fas fa-spinner fa-spin':status.fileUploading}"  
                     ></i>
                   </label>
                   <input

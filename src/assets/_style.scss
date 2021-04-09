@@ -180,7 +180,7 @@ h1, h2, h3, h4, h5, h6, figure {
   font-family: "Montserrat", Arial, sans-serif;
 }
 .fh5co-nav ul li a {
-  font-size: 13px;
+  font-size: 19px;
   padding: 30px 10px;
   text-transform: uppercase;
   color: rgba(0, 0, 0, 0.5);
@@ -1499,6 +1499,9 @@ h1, h2, h3, h4, h5, h6, figure {
   transition: 0.5s;
   padding: 8px 20px;
 }
+.btn.btn-sm {
+  padding: 0.25rem 0.5rem !important;
+}
 .btn.btn-md {
   padding: 8px 20px !important;
 }
@@ -1666,15 +1669,15 @@ h1, h2, h3, h4, h5, h6, figure {
   padding-bottom: 2em !important;
 }
 
-.fh5co-loader {
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  // background: url('images/loader.gif') center no-repeat #fff;
-}
+// .fh5co-loader {
+//   position: fixed;
+//   left: 0px;
+//   top: 0px;
+//   width: 100%;
+//   height: 100%;
+//   z-index: 9999;
+//   // background: url('images/loader.gif') center no-repeat #fff;
+// }
 
 .js .animate-box {
   opacity: 0;
@@ -1753,5 +1756,11 @@ h1, h2, h3, h4, h5, h6, figure {
   animation-iteration-count: 1;
 }
 
-
+.badge-outline
+{
+  padding:0.01rem 0.3rem;
+  color: darkgray;
+  border: 1.5px solid darkgray;
+  background-color: transparent;
+}
 

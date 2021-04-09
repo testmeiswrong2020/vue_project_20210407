@@ -1,7 +1,7 @@
 
 import Vue from 'vue';
 
-
+import Vuex from 'vuex';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import 'bootstrap';
@@ -33,10 +33,11 @@ import App from './App.vue';
 import './bus';
 import currencyFilter from './filters/currency.js';
 import dateFilter from './filters/date.js';
+import store from './store';
 
 Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
-
+Vue.use(Vuex);
 
 Vue.component("Loading",Loading);//以global全域方式啟用loading 特效
 Vue.filter("currency",currencyFilter);
@@ -50,6 +51,7 @@ axios.defaults.withCredentials = true;
 /* eslint-disable no-new */
 new Vue({
   router,
+  store,
   el: '#app',
   render: h => h(App),
 });
