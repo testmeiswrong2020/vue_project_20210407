@@ -70,6 +70,11 @@ export default new VueRouter({
           component: () => import('./views/Product.vue'),
         },
         {
+          path: 'product/:category/:series', //  jewelry/catier
+          name: 'FilterProducts',
+          component: () => import('./views/Product.vue')
+        },
+        {
           path: 'product_detail',
           name: 'ProductDetail',
           component: () => import('./views/ProductDetail.vue'),

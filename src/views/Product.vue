@@ -10,15 +10,14 @@
             <ul id="accordionProducts" class="navbar-nav">
               <li class="nav-item border-top py-2">
                 <div class="card border-0">
-                  <div
-                    id="productsHeadingOne"
+                  <div  id="productsHeadingOne"
                     class="card-header p-0 border-0 bg-white"
                   >
                     <h5 class="mb-0">
                       <button
                         data-toggle="collapse"
                         data-target="#ProductsCollapseOne"
-                        class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1 collapsed"
+                        class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1 "
                         aria-expanded="false"
                       >
                         精品包 <span class="h8">HANDBAG</span>
@@ -37,14 +36,9 @@
                           v-for="item in brands[0]"
                           :key="item"
                         >
-                          <router-link
-                            :to="{ query: { name: `handbag/${item}` } }"
-                          >
-                            <div
-                              class="nav-link h7 font-weight-normal text-capitalize mb-0"
-                            >
-                              {{ item }} 系列
-                            </div></router-link
+                          <router-link   class="nav-link h7 text-capitalize font-weight-normal mb-0"
+                            :to="`/product/handbag/${item}`"
+                            >{{ item }} 系列</router-link
                           >
                         </li>
                       </ul>
@@ -62,7 +56,7 @@
                       <button
                         data-toggle="collapse"
                         data-target="#ProductsCollapseTwo"
-                        class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1"
+                        class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1 "
                         aria-expanded="true"
                       >
                         腕錶
@@ -84,13 +78,9 @@
                           :key="item"
                         >
                           <router-link
-                            :to="{ query: { name: `watch/${item}` } }"
-                          >
-                            <div
-                              class="nav-link h7 font-weight-normal text-capitalize mb-0"
-                            >
-                              {{ item }} 系列
-                            </div></router-link
+                            class="nav-link h7 text-capitalize font-weight-normal mb-0"
+                            :to="`/product/watch/${item}`"
+                            >{{ item }} 系列</router-link
                           >
                         </li>
                       </ul>
@@ -108,7 +98,7 @@
                       <button
                         data-toggle="collapse"
                         data-target="#ProductsCollapseThree"
-                        class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1"
+                        class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1 "
                       >
                         珠寶
                         <span class="h8">JEWELRY</span>
@@ -128,13 +118,9 @@
                           :key="item"
                         >
                           <router-link
-                            :to="{ query: { name: `jewelry/${item}` } }"
-                          >
-                            <div
-                              class="nav-link h7 font-weight-normal text-capitalize mb-0"
-                            >
-                              {{ item }} 系列
-                            </div></router-link
+                            class="nav-link text-capitalize h7 font-weight-normal mb-0"
+                            :to="`/product/jewelry/${item}`"
+                            >{{ item }} 系列</router-link
                           >
                         </li>
                       </ul>
@@ -152,7 +138,7 @@
                       <button
                         data-toggle="collapse"
                         data-target="#ProductsCollapseFour"
-                        class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1"
+                        class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1 "
                       >
                         鞋履
                         <span class="h8">SHOE</span>
@@ -171,14 +157,10 @@
                           v-for="item in brands[3]"
                           :key="item"
                         >
-                          <router-link
-                            :to="{ query: { name: `shoe/${item}` } }"
-                          >
-                            <div
-                              class="nav-link h7 font-weight-normal text-capitalize mb-0"
-                            >
-                              {{ item }} 系列
-                            </div></router-link
+                        <router-link
+                            class="nav-link h7 text-capitalize font-weight-normal mb-0"
+                            :to="`/product/shoe/${item}`"
+                            >{{ item }} 系列</router-link
                           >
                         </li>
                       </ul>
@@ -188,6 +170,7 @@
               </li>
             </ul>
           </div>
+           <!-- 左側選單 (List group) -->
         </div>
         <div class="col-md-9">
           <div class="row py-2">
@@ -337,7 +320,7 @@ export default {
       this.$http
         .get(api)
         .then((response) => {
-          console.log("response", response);
+          // console.log("response", response);
           //不能用this.products去接資料，因為此處的this對應的是window。一定要const vm=this;然後這樣來接資料才可
           vm.products = response.data.products;
           vm.getUniqueList();
@@ -367,7 +350,11 @@ export default {
         if (item.title.indexOf("錶") != -1) {
           categories_2.add(item.category);
         }
-        if (item.title.indexOf("指") != -1 || item.title.indexOf("項") != -1) {
+        if (
+          item.title.indexOf("指") != -1 ||
+          item.title.indexOf("環") != -1 ||
+          item.title.indexOf("項") != -1
+        ) {
           categories_3.add(item.category);
         }
         if (item.title.indexOf("鞋") != -1) {
@@ -403,50 +390,79 @@ export default {
     filterData() {
       const vm = this;
       //先過濾資料後才處理後面的分頁
-
       let filteredData = [];
-      let clickedBrand = vm.$route.query.name;
-      console.log("clickedBrand", clickedBrand);
-      if (clickedBrand != "" && clickedBrand !== undefined) {
-        if (clickedBrand === "handbag") {
-          filteredData = vm.products.filter((item, i) => {
-            return item.title.indexOf("包") !== -1;
-          });
-        } else if (clickedBrand === "shoe") {
-          filteredData = vm.products.filter((item, i) => {
-            return item.title.indexOf("鞋") !== -1;
-          });
-        } else if (clickedBrand === "watch") {
-          filteredData = vm.products.filter((item, i) => {
-            return item.title.indexOf("錶") !== -1;
-          });
-        } else if (clickedBrand === "jewelry") {
-          filteredData = vm.products.filter((item, i) => {
-            return (
-              item.title.indexOf("指") !== -1 || item.title.indexOf("項") !== -1
-            );
-          });
-        } else {
-          filteredData = vm.products.filter((item, i) => {
-            //filter會把return為true的值加到items陣列內
-            return item.category == clickedBrand; //category的值如果是選到的brand的話
-          });
-        }
-      } else {
+      if ( vm.$route.fullPath === "/product/" || vm.$route.fullPath === "/product" ) {
         filteredData = vm.products;
+      } else {
+        let category = vm.$route.params.category;
+        let series = vm.$route.params.series;
+        if (vm.$route.params.category === "jewelry") {
+          if (vm.$route.params.series === "所有") {
+            filteredData = vm.products.filter((item, i) => {
+              return (
+                item.title.indexOf("指") !== -1 ||
+                item.title.indexOf("項") !== -1 ||
+                item.title.indexOf("環") !== -1
+              );
+            });
+          } else {
+            filteredData = vm.products.filter((item) => {
+              return (
+                item.category === series &&
+                (item.title.indexOf("指") !== -1 ||
+                  item.title.indexOf("項") !== -1 ||
+                  item.title.indexOf("環") !== -1)
+              );
+            });
+          }
+        } else if (category === "handbag") {
+          if (series === "所有") {
+            filteredData = vm.products.filter((item) => {
+              return item.title.indexOf("包") !== -1;
+            });
+          } else {
+            filteredData = vm.products.filter((item) => {
+              return (
+                item.category === series && item.title.indexOf("包") !== -1
+              );
+            });
+          }
+        } else if (category === "shoe") {
+          if (series === "所有") {
+            filteredData = vm.products.filter((item) => {
+              return item.title.indexOf("鞋") !== -1;
+            });
+          } else {
+            filteredData = vm.products.filter((item) => {
+              return (
+                item.category === series && item.title.indexOf("鞋") !== -1
+              );
+            });
+          }
+        } else if (category === "watch") {
+          if (series === "所有") {
+            filteredData = vm.products.filter((item) => {
+              return item.title.indexOf("錶") !== -1;
+            });
+          } else {
+            filteredData = vm.products.filter((item) => {
+              return (
+                item.category === series && item.title.indexOf("錶") !== -1
+              );
+            });
+          }
+        }
       }
 
       //分頁
       const newData = [];
       filteredData.forEach((item, i) => {
-        if (i % 10 === 0) {
-          //每10筆資料加入一個陣列
+        if (i % 10 === 0) { //每10筆資料加入一個陣列
           newData.push([]);
         }
         const page = parseInt(i / 10); //取頁數
         newData[page].push(item); //把指定頁數資料push進
       });
-      // console.log("==d=ddd=", newData);
       return newData;
     },
   },
