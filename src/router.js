@@ -1,7 +1,6 @@
 //官方的 component
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-//自訂的分頁 component
 
 //通过 Vue.use() 啟用
 Vue.use(VueRouter);
@@ -13,7 +12,7 @@ export default new VueRouter({
     {
       //網頁路徑亂輸入的話，一律導到login畫面
       path: '*',
-      redirect: '/home'
+      redirect: 'home'
     },
 
     //登入後畫面router
@@ -56,7 +55,7 @@ export default new VueRouter({
         //登入前畫面router
     {
       path: '/',
-      redirect: '/home',
+      redirect: 'home',
       name: 'Index',
       component: () => import('./views/Index.vue'),
       children: [

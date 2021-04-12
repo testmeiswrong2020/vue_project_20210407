@@ -19,24 +19,12 @@
             </router-link>
           </div>
         </div> -->
+
+
         <div class="col-md-6">
           <div class="home-products-items">
             <router-link to="/product">
-              <div
-                class="img"
-                style="background-image:url('https://images.unsplash.com/photo-1540574163026-643ea20ade25?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80')"
-              ></div>
-              <span class="home-products-title">
-                <div class="eng">Jewelry</div>
-                <h3 class="text-white">– 珠寶</h3>
-              </span>
-            </router-link>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="home-products-items negative-margin">
-            <router-link to="/product">
-              <div
+               <div
                 class="img"
                 style="background-image:url('images/category_1.jpg')"
               ></div>
@@ -48,9 +36,9 @@
           </div>
         </div>
         <div class="col-md-6">
-          <div class="home-products-items">
+          <div class="home-products-items negative-margin">
             <router-link to="/product">
-              <div
+             <div
                 class="img"
                 style="background-image:url('images/category_2.jpg')"
               ></div>
@@ -62,11 +50,27 @@
           </div>
         </div>
         <div class="col-md-6">
+          <div class="home-products-items">
+            <router-link to="/product">
+   <div
+                class="img"
+                style="background-image:url('images/category_3.jpg')"
+              ></div>
+              <span class="home-products-title">
+                <div class="eng">Jewelry</div>
+                <h3 class="text-white">– 珠寶</h3>
+              </span>
+              
+              
+            </router-link>
+          </div>
+        </div>
+        <div class="col-md-6">
           <div class="home-products-items negative-margin">
             <router-link to="/product">
               <div
                 class="img"
-                style="background-image:url('https://images.unsplash.com/photo-1532588213355-52317771cce6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80')"
+                style="background-image:url('images/category_4.jpg')"
               ></div>
               <span class="home-products-title">
                 <div class="eng">Shoe</div>
@@ -82,7 +86,7 @@
 <script>
 import $ from 'jquery'
 export default {
-   // data(){
+  //  data(){
   //   return{
   //          cardContent: {
   //            0: {
@@ -105,8 +109,8 @@ export default {
   //         3: {
   //         imgUrl:
   //           "https://images.unsplash.com/photo-1532588213355-52317771cce6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80",
-  //         title: "Clothing",
-  //          title_1:"服飾"
+  //         title: "Shoe",
+  //          title_1:"鞋履"
   //       },
   //     }
   //   }
@@ -128,7 +132,7 @@ export default {
         // 當元素到達視窗高度一半時及動態加入ClassName
         $('.home-products .home-products-title').addClass('shown');
       }
-    })
-  }
+    });
+  },
 }
 </script>

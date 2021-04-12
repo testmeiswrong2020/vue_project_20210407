@@ -1,10 +1,9 @@
 
 import Vue from 'vue';
-
-import Vuex from 'vuex';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 import 'bootstrap';
+import Vuex from 'vuex';
 
 //install fontawesome
 import '@fortawesome/fontawesome-free/css/all.css';

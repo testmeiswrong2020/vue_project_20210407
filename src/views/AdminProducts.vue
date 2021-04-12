@@ -224,7 +224,7 @@
             <button
               type="button"
               class="btn btn-primary"
-              @click="updateProduct"
+              @click.prevent="updateProduct"
             >
               確認
             </button>
