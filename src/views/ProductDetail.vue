@@ -1,7 +1,58 @@
 <template>
   <div>
-    <loading :active.sync="isLoading"></loading>
-    <div id="fh5co-product">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-7">
+          <img class="w-100" src="images/product-single-1.jpg" />
+        </div>
+        <div class="col-md-5">
+          <div class="px-5">
+ <h4 class="text-muted text-left">Prada</h4>
+          <h2 class="text-left">Prada bag</h2>
+          <div class="border-top"></div>
+          <dl>
+            <h4 class="text-left">【商品介紹】</h4>
+            <dd>A description list is perfect for defining terms.</dd>
+          </dl>
+          <h4 class="text-left">【商品詳情】</h4>
+          <div class="px-4">
+            <table class="table text-center">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Payment Taken</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>TB - Monthly</td>
+                  <td>01/04/2012</td>
+                </tr>
+                <tr>
+                  <td>TB - Monthly</td>
+                  <td>01/04/2012</td>
+                </tr>
+                <tr>
+                  <td>TB - Monthly</td>
+                  <td>02/04/2012</td>
+                </tr>
+                <tr>
+                  <td>03/04/2012</td>
+                  <td>Pending</td>
+                </tr>
+                <tr>
+                  <td>04/04/2012</td>
+                  <td>Call in to confirm</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+         
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div id="fh5co-product">
       <div class="container">
         <div class="row">
           <div class="col-md-7">
@@ -32,8 +83,7 @@
         </div>
       </div>
    
-    </div>
-   
+    </div> -->
   </div>
 </template>
 

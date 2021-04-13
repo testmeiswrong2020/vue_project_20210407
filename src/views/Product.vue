@@ -18,7 +18,6 @@
                         data-toggle="collapse"
                         data-target="#ProductsCollapseOne"
                         class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1 "
-                        aria-expanded="false"
                       >
                         精品包 <span class="h8">HANDBAG</span>
                       </button>
@@ -57,7 +56,6 @@
                         data-toggle="collapse"
                         data-target="#ProductsCollapseTwo"
                         class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1 "
-                        aria-expanded="true"
                       >
                         腕錶
                         <span class="h8">WATCH</span>
@@ -68,7 +66,7 @@
                     id="ProductsCollapseTwo"
                     aria-labelledby="headingOne"
                     data-parent="#accordionProducts"
-                    class="collapse show"
+                    class="collapse "
                   >
                     <div class="card-body py-2">
                       <ul class="navbar-nav mr-auto">
