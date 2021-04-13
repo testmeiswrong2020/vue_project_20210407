@@ -15,7 +15,7 @@ export default new Vuex.Store({
     cart: {
       carts: []
     },
-  
+
   },
   actions: { //等於method
     updateLoading(context, status) {
@@ -75,12 +75,12 @@ export default new Vuex.Store({
         console.log(error);
       });;
     },
-    getProductDetail(context ,id) {
+    getProductDetail(context, id) {
       const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/product/${id}`;
       context.commit('LOADING', true);
       axios.get(url)
         .then((response) => {
-          // console.log("getProductDetail", response.data);
+          // console.log("getProductDetail", response.data.product);
           context.commit('PRODUCTDETAIL', response.data.product);
           context.commit('LOADING', false);
         })

@@ -32,7 +32,10 @@
                   class="btn btn-primary w-100"
                   @click.prevent="addToCart(productdetail.id)"
                 >
-                  <i :class="{'fas fa-spinner fa-spin': status.loadingItem_addToCart === true,
+                  <i
+                    :class="{
+                      'fas fa-spinner fa-spin':
+                        status.loadingItem_addToCart === true,
                     }"
                   ></i>
                   加到購物車
@@ -50,31 +53,14 @@
             <h4 class="text-left">【商品詳情】</h4>
             <div class="px-4">
               <table class="table table-sm">
-                <tbody>
-                  <!-- 上鏈錶冠:旋入式，三扣鎖三重防水系統 鏡面:防刮損藍水晶，小窗凸透鏡放大日曆
-    防水深度:300米/1,000呎 -->
-                  <tr>
-                    <th>錶殼 :</th>
-                    <td>蠔式，41毫米 蠔式鋼</td>
+                <tbody >
+                  <tr  v-for="(item,index) in filterProductDetailContent[0]" :key="index">
+                    <th  class=" border-bottom">{{ item}}</th>
+                    <div  v-for="(item1,index1) in filterProductDetailContent[1]" :key="index1">
+                       <td style="width: 300px;" class=" border-bottom" v-if="index===index1">{{item1}}</td>
+                    </div>
                   </tr>
-                  <tr>
-                    <th>蠔式錶殼結構 :</th>
-                    <td>一體成型中層錶殼，旋入式底蓋及上鏈錶冠</td>
-                  </tr>
-                  <tr>
-                    <th>直徑 :</th>
-                    <td>41毫米</td>
-                  </tr>
-                  <tr>
-                    <th>材質 :</th>
-                    <td>蠔式鋼</td>
-                  </tr>
-                  <tr>
-                    <th>外圈 :</th>
-                    <td>
-                      單向旋轉60分鐘刻度外圈，配防刮損Cerachrom陶質字圈，鍍鉑金數字及刻度
-                    </td>
-                  </tr>
+                
                 </tbody>
               </table>
             </div>
@@ -96,19 +82,21 @@
 </style>
 <script>
 import { mapGetters } from "vuex";
+
 export default {
   data() {
     return {
       status: {
         loadingItem_addToCart: false,
       },
+      productdetailcontent: {},
       // coupon_code: "",
     };
   },
   methods: {
     //取得單一 商品細節
     getProductDetail(id) {
-       this.$store.dispatch("getProductDetail", id);
+      this.$store.dispatch("getProductDetail", id);
     },
     addToCart(id, qty = 1) {
       //qty =1代表未傳入qty的話就會預設傳1
@@ -131,9 +119,27 @@ export default {
       });
     },
   },
-    computed: {
+  computed: {
     ...mapGetters(["productdetail"]),
+    filterProductDetailContent() {
+      const vm = this;
+      const newData = [];
+      let contentAry = new Map();
+      let obj={};
+      let value = vm.productdetail.content;
+      if (value !== undefined && value !== "") {
+        let beforeValue = value.substr(0, value.indexOf("/"));
+        let afterValue = value.substr(value.indexOf("/") + 1);
+        // console.log("beforeValue", beforeValue, "afterv", afterValue);
+        var matchBeforeValue = beforeValue.split(",");
+        var matchAfterValue = afterValue.split(",");
+        newData.push(matchBeforeValue);
+        newData.push(matchAfterValue);
+          console.log("newData", newData);
+      }
+      return newData;
     },
+  },
   created() {
     //把productid存起來
     let id = this.$route.query.name;
