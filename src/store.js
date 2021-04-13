@@ -8,32 +8,49 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {  //等於data
     isLoading: false,
-    currentPage: 0,
     products: [],
-    categories: [],
-    pagination: {},
+    productdetail: [],
+    brands: [],
+    // pagination: {},
     cart: {
       carts: []
     },
+  
   },
   actions: { //等於method
     updateLoading(context, status) {
       context.commit('LOADING', status);
     },
     //取得產品
-    getProducts(context, page) { //page = 1  
+    getProducts(context) {
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/products/all`;
-      // const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/products?page=${page}`;
+
       context.commit('LOADING', true);
-      axios.get(api).then((response) => {
-          console.log("getProducts", response);
+      axios.get(api)
+        .then((response) => {
+          //不能用this.products去接資料，因為此處的this對應的是window。一定要const vm=this;然後這樣來接資料才可
           context.commit('PRODUCTS', response.data.products);
-          context.commit('CATEGORIES', response.data.products);
-          context.commit('LOADING', false);
-          context.commit('PAGINATION', response.data.pagination);
-      
-      });
+          context.commit('BRANDS', response.data.products);
+          // vm.pagination = response.data.pagination;
+          context.commit("LOADING", false);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     },
+    //<<一次只load一頁資料>>
+    // getProducts(context, page) { //page = 1  
+    //   const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/products/all`;
+    //   // const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/products?page=${page}`;
+    //   context.commit('LOADING', true);
+    //   axios.get(api).then((response) => {
+    //     console.log("getProducts", response);
+    //     context.commit('PRODUCTS', response.data.products);
+    //     context.commit('CATEGORIES', response.data.products);
+    //     context.commit('LOADING', false);
+    //     context.commit('PAGINATION', response.data.pagination);
+    //   });
+    // },
     //取得購物車內容
     getCart(context) {
       const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`;
@@ -42,7 +59,9 @@ export default new Vuex.Store({
           context.commit('CART', response.data.data);
         }
         console.log("getCart", response.data.data);
-      });
+      }).catch(function (error) {
+        console.log(error);
+      });;
     },
     //移除購物車內容
     removeCartItem(context, id) {
@@ -51,17 +70,26 @@ export default new Vuex.Store({
       axios.delete(url).then((response) => {
         // console.log("removeCartItemsuccess", response.data.success);
         context.commit('LOADING', false);
-        if (response.data.success) {
-          // this.$bus.$emit("message:push", response.data.message, "success");
-          context.dispatch("getCart"); // <<注意!!>> 此處用dispatch叫用getcart
-        }
-        // else{
-        //   this.$bus.$emit("message:push", response.data.message, "danger");
-        // }
-      });
+        context.dispatch("getCart"); // <<注意!!>> 此處用dispatch叫用getcart
+      }).catch(function (error) {
+        console.log(error);
+      });;
+    },
+    getProductDetail(context ,id) {
+      const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/product/${id}`;
+      context.commit('LOADING', true);
+      axios.get(url)
+        .then((response) => {
+          // console.log("getProductDetail", response.data);
+          context.commit('PRODUCTDETAIL', response.data.product);
+          context.commit('LOADING', false);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     },
   },
-  mutations: { 
+  mutations: {
     LOADING(state, status) {
       state.isLoading = status;
     },
@@ -69,54 +97,64 @@ export default new Vuex.Store({
     PRODUCTS(state, payload) {
       state.products = payload;
     },
-    CATEGORIES(state, payload) {
-      let categories_1 = [];
-      let categories_2 = [];
-      let categories_3 =[];
-      let categories_4 =[];
-      let combined2 =[];
-      categories_1.push("所有");
-      categories_2.push("所有");
-      categories_3.push("所有");
-      categories_4.push("所有");
-      payload.forEach((item) => {
-        if(item.title.indexOf('包')!=-1&&categories_1.includes(item.category) === false){
-          categories_1.push(item.category);
-        }
-        if(item.title.indexOf('錶')!=-1&&categories_2.includes(item.category) === false){
-          categories_2.push(item.category);
-        }
-        if(item.title.indexOf('指')!=-1&&categories_3.includes(item.category) === false){
-          categories_3.push(item.category);
-        }
-
-        if(item.title.indexOf('鞋')!=-1&&categories_4.includes(item.category) === false){
-          categories_4.push(item.category);
-        }
-  
-      });
-       combined2 = [categories_1,categories_2,categories_3,categories_4];
-      // console.log("----",combined2);
-      state.categories = Array.from(combined2);
+    BRANDS(state, payload) {
+      state.brands = payload;
     },
-    PAGINATION(state, payload) {
-      state.pagination = payload;
-    },
+    // PAGINATION(state, payload) {
+    //   state.pagination = payload;
+    // },
     CART(state, payload) {
       state.cart = payload;
+    },
+    PRODUCTDETAIL(state, payload) {
+      state.productdetail = payload;
     },
   },
   getters: { //等於computed
     products(state) {
       return state.products;
     },
- 
-    categories(state) {
-      return state.categories;
+    productdetail(state) {
+      return state.productdetail;
     },
-    pagination(state) {
-      return state.pagination;
+    brands(state) {
+      const brands = new Set(); //用set方式可以避免加入重複職
+      const categories_1 = new Set();
+      const categories_2 = new Set();
+      const categories_3 = new Set();
+      const categories_4 = new Set();
+      let combined2 = [];
+      categories_1.add("所有");
+      categories_2.add("所有");
+      categories_3.add("所有");
+      categories_4.add("所有");
+      state.products.forEach((item, i) => {
+        brands.add(item.category);
+        if (item.title.indexOf("包") != -1) {
+          categories_1.add(item.category);
+        }
+        if (item.title.indexOf("錶") != -1) {
+          categories_2.add(item.category);
+        }
+        if (
+          item.title.indexOf("指") != -1 ||
+          item.title.indexOf("環") != -1 ||
+          item.title.indexOf("項") != -1
+        ) {
+          categories_3.add(item.category);
+        }
+        if (item.title.indexOf("鞋") != -1) {
+          categories_4.add(item.category);
+        }
+      });
+      combined2 = [categories_1, categories_2, categories_3, categories_4];
+      state.brands = Array.from(combined2);
+      //
+      return state.brands;
     },
+    // pagination(state) {
+    //   return state.pagination;
+    // },
     cart(state) {
       return state.cart;
     },

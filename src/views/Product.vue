@@ -10,14 +10,15 @@
             <ul id="accordionProducts" class="navbar-nav">
               <li class="nav-item border-top py-2">
                 <div class="card border-0">
-                  <div  id="productsHeadingOne"
+                  <div
+                    id="productsHeadingOne"
                     class="card-header p-0 border-0 bg-white"
                   >
                     <h5 class="mb-0">
                       <button
                         data-toggle="collapse"
                         data-target="#ProductsCollapseOne"
-                        class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1 "
+                        class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1"
                       >
                         精品包 <span class="h8">HANDBAG</span>
                       </button>
@@ -35,7 +36,8 @@
                           v-for="item in brands[0]"
                           :key="item"
                         >
-                          <router-link   class="nav-link h7 text-capitalize font-weight-normal mb-0"
+                          <router-link
+                            class="nav-link h7 text-capitalize font-weight-normal mb-0"
                             :to="`/product/handbag/${item}`"
                             >{{ item }} 系列</router-link
                           >
@@ -55,7 +57,7 @@
                       <button
                         data-toggle="collapse"
                         data-target="#ProductsCollapseTwo"
-                        class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1 "
+                        class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1"
                       >
                         腕錶
                         <span class="h8">WATCH</span>
@@ -66,7 +68,7 @@
                     id="ProductsCollapseTwo"
                     aria-labelledby="headingOne"
                     data-parent="#accordionProducts"
-                    class="collapse "
+                    class="collapse"
                   >
                     <div class="card-body py-2">
                       <ul class="navbar-nav mr-auto">
@@ -96,7 +98,7 @@
                       <button
                         data-toggle="collapse"
                         data-target="#ProductsCollapseThree"
-                        class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1 "
+                        class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1"
                       >
                         珠寶
                         <span class="h8">JEWELRY</span>
@@ -136,7 +138,7 @@
                       <button
                         data-toggle="collapse"
                         data-target="#ProductsCollapseFour"
-                        class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1 "
+                        class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1"
                       >
                         鞋履
                         <span class="h8">SHOE</span>
@@ -155,7 +157,7 @@
                           v-for="item in brands[3]"
                           :key="item"
                         >
-                        <router-link
+                          <router-link
                             class="nav-link h7 text-capitalize font-weight-normal mb-0"
                             :to="`/product/shoe/${item}`"
                             >{{ item }} 系列</router-link
@@ -168,7 +170,7 @@
               </li>
             </ul>
           </div>
-           <!-- 左側選單 (List group) -->
+          <!-- 左側選單 (List group) -->
         </div>
         <div class="col-md-9">
           <div class="row py-2">
@@ -233,8 +235,10 @@
                           class="btn btn-primary rounded btn-sm mb-3 mt-1"
                         >
                           <i
-                            class="fas fa-spinner fa-spin"
-                            v-if="status.loadingItem_addToCart === item.id"
+                            :class="{
+                              'fas fa-spinner fa-spin':
+                                status.loadingItem_addToCart === item.id,
+                            }"
                           ></i>
                           加入購物車
                         </button>
@@ -286,7 +290,7 @@
 
 <script>
 import Jumbotron from "../components/Jumbotron.vue";
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
   components: {
@@ -294,13 +298,10 @@ export default {
   },
   data() {
     return {
-      products: [],
       status: {
-        loadingItem_addToCart: "",
+        loadingItem_addToCart: "s",
       },
       currentPage: 0,
-      brands: [],
-      currentBrand: "",
     };
   },
 
@@ -308,60 +309,7 @@ export default {
     /**
      * 讀取產品資料
      * */
-    // getProducts(page = 1) {
-    //   // const vm = this;
-    //   this.$store.dispatch("getProducts", page);
-    // },
-    getProducts() {
-      const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/products/all`;
-      const vm = this;
-      this.$http
-        .get(api)
-        .then((response) => {
-          // console.log("response", response);
-          //不能用this.products去接資料，因為此處的this對應的是window。一定要const vm=this;然後這樣來接資料才可
-          vm.products = response.data.products;
-          vm.getUniqueList();
-          // vm.pagination = response.data.pagination;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    },
-    getUniqueList() {
-      const brands = new Set(); //用set方式可以避免加入重複職
-      const vm = this;
-      const categories_1 = new Set();
-      const categories_2 = new Set();
-      const categories_3 = new Set();
-      const categories_4 = new Set();
-      let combined2 = [];
-      categories_1.add("所有");
-      categories_2.add("所有");
-      categories_3.add("所有");
-      categories_4.add("所有");
-      vm.products.forEach((item, i) => {
-        brands.add(item.category);
-        if (item.title.indexOf("包") != -1) {
-          categories_1.add(item.category);
-        }
-        if (item.title.indexOf("錶") != -1) {
-          categories_2.add(item.category);
-        }
-        if (
-          item.title.indexOf("指") != -1 ||
-          item.title.indexOf("環") != -1 ||
-          item.title.indexOf("項") != -1
-        ) {
-          categories_3.add(item.category);
-        }
-        if (item.title.indexOf("鞋") != -1) {
-          categories_4.add(item.category);
-        }
-      });
-      combined2 = [categories_1, categories_2, categories_3, categories_4];
-      vm.brands = Array.from(combined2); //new set只是類陣列，此處將類陣列轉為一般陣列，新增一個brands陣列掛載資料
-    },
+    ...mapActions(["getProducts"]),
     addToCart(id, qty = 1) {
       //qty =1代表未傳入qty的話就會預設傳1
       const vm = this;
@@ -379,17 +327,20 @@ export default {
         } else {
           vm.$bus.$emit("message:push", response.data.message, "danger");
         }
-        vm.status.loadingItem_addToCart = "";
+        vm.status.loadingItem_addToCart = "s";
       });
     },
   },
   computed: {
-    // ...mapGetters(["categories", "products", "pagination"]),
+    ...mapGetters(["brands", "products"]),
     filterData() {
       const vm = this;
       //先過濾資料後才處理後面的分頁
       let filteredData = [];
-      if ( vm.$route.fullPath === "/product/" || vm.$route.fullPath === "/product" ) {
+      if (
+        vm.$route.fullPath === "/product/" ||
+        vm.$route.fullPath === "/product"
+      ) {
         filteredData = vm.products;
       } else {
         let category = vm.$route.params.category;
@@ -455,7 +406,8 @@ export default {
       //分頁
       const newData = [];
       filteredData.forEach((item, i) => {
-        if (i % 10 === 0) { //每10筆資料加入一個陣列
+        if (i % 10 === 0) {
+          //每10筆資料加入一個陣列
           newData.push([]);
         }
         const page = parseInt(i / 10); //取頁數
