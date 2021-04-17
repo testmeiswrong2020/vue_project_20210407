@@ -177,7 +177,7 @@ export default {
     return {
       someLocalProperty: [], // Vue-Carousel Data
       slideContent: {
-             0: {
+            0: {
 			imgUrl:
             "images/rc.jpg",
           title: "Yves Saint Laurent",

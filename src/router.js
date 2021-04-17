@@ -18,6 +18,7 @@ export default new VueRouter({
     //登入後畫面router
     {
       path: '/admin',
+      redirect: '/login',
       name: 'Dashboard',
       component: () => import('./components/Dashboard.vue'),
       //使用children來製作巢狀router
@@ -83,6 +84,11 @@ export default new VueRouter({
           path: 'checkout',
           name: 'Checkout',
           component: () => import('./views/Checkout.vue'),
+        },
+        {
+          path: 'contact',
+          name: 'Contact',
+          component: () => import('./views/Contact.vue'),
         },
         {
           path: 'customer_order',
