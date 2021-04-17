@@ -7,7 +7,7 @@
               <div><img class="img-fluid" src="images/contact.jpg" /></div>
             </div>
             <div class="col-md-6 ">
-              <div class="fh5co-contact-info text-center mt-3">
+              <div class="fh5co-contact-info text-center mt-2">
                 <h3><i class="fas fa-phone-square-alt fa-lg mr-3"></i>聯絡我們</h3>
                 <div class="border-top mb-2 mt-n2"></div>
                 <h5>門市位置</h5>
