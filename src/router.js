@@ -91,6 +91,11 @@ export default new VueRouter({
           component: () => import('./views/Contact.vue'),
         },
         {
+          path: 'common_question',
+          name: 'CommonQuestion',
+          component: () => import('./views/CommonQuestion.vue'),
+        },
+        {
           path: 'customer_order',
           name: 'CustomerOrder',
           component: () => import('./views/CustomerOrder.vue'),

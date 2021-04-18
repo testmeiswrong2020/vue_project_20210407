@@ -4,6 +4,7 @@
       <div class="row mt-4 mx-1">
         <div class="col-md-8">
           <img class="w-100" :src="`${productdetail.imageUrl}`" />
+          <button class="btn btn-light "  @click.prevent="$router.go(-1)" >back</button>
         </div>
         <div class="col-md-4">
           <div class="">
