@@ -15,7 +15,7 @@ export default new Vuex.Store({
     cart: {
       carts: []
     },
-
+    chosedindex:'0'
   },
   actions: { //等於method
     updateLoading(context, status) {
@@ -88,6 +88,9 @@ export default new Vuex.Store({
           console.log(error);
         });
     },
+    showDifferentJumbotron(context,chosedindex){
+      context.commit('CHOSEDINDEX',chosedindex);
+      },
   },
   mutations: {
     LOADING(state, status) {
@@ -109,6 +112,9 @@ export default new Vuex.Store({
     PRODUCTDETAIL(state, payload) {
       state.productdetail = payload;
     },
+    CHOSEDINDEX(state, payload) {
+      state.chosedindex = payload;
+    },
   },
   getters: { //等於computed
     products(state) {
@@ -116,6 +122,9 @@ export default new Vuex.Store({
     },
     productdetail(state) {
       return state.productdetail;
+    },
+    chosedindex(state) {
+      return state.chosedindex;
     },
     brands(state) {
       const brands = new Set(); //用set方式可以避免加入重複職

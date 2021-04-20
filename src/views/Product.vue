@@ -35,6 +35,7 @@
                           class="nav-item"
                           v-for="item in brands[0]"
                           :key="item"
+                          @click.prevent="showDifferentJumbotron(0)"
                         >
                           <router-link
                             class="nav-link h7 text-capitalize font-weight-normal mb-0"
@@ -76,6 +77,7 @@
                           class="nav-item"
                           v-for="item in brands[1]"
                           :key="item"
+                              @click.prevent="showDifferentJumbotron(1)"
                         >
                           <router-link
                             class="nav-link h7 text-capitalize font-weight-normal mb-0"
@@ -116,6 +118,7 @@
                           class="nav-item"
                           v-for="item in brands[2]"
                           :key="item"
+                            @click.prevent="showDifferentJumbotron(2)"
                         >
                           <router-link
                             class="nav-link text-capitalize h7 font-weight-normal mb-0"
@@ -156,6 +159,7 @@
                           class="nav-item"
                           v-for="item in brands[3]"
                           :key="item"
+                            @click.prevent="showDifferentJumbotron(3)"
                         >
                           <router-link
                             class="nav-link h7 text-capitalize font-weight-normal mb-0"
@@ -330,6 +334,10 @@ export default {
         vm.status.loadingItem_addToCart = "s";
       });
     },
+    //Jumbotron
+     showDifferentJumbotron(chosedindex){
+     this.$store.dispatch("showDifferentJumbotron", chosedindex);
+    }
   },
   computed: {
     ...mapGetters(["brands", "products"]),
