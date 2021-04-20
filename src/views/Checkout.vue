@@ -1,6 +1,112 @@
 <template>
-    <div>
-  <div class="container main-contant py-5">
+  <div>
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-lg-12 mb-4">
+           <h3>購物車清單</h3>
+          <table class="table custom-font-size table-sm">
+            <thead>
+              <th >品名</th>
+              <th  >數量</th>
+              <th  >單價</th>
+              <th ></th>
+            </thead>
+            <tbody>
+              <tr v-for="item in cart.carts" :key="item.id">
+                <td class="align-middle w-50">
+                  <div class="row no-gutters">
+                    <div class="col-md-2">
+                      <img
+                        class="img-fluid img-thumbnail"
+                        :src="`${item.product.imageUrl}`"
+                        alt=""
+                      />
+                    </div>
+                    <div class="col-md-10 pl-3">
+                      {{ item.product.title }}
+                      <!-- <div class="text-success" v-if="item.coupon">
+                        已套用優惠券
+                      </div> -->
+                    </div>
+                  </div>
+                </td>
+                <td class="align-middle w-25">
+                  {{ item.qty }}/{{ item.product.unit }}
+                </td>
+                <td class="align-middle w-25">
+                 <del> {{ item.product.origin_price | currency }}</del><br>
+                    <div class="text-success">{{ item.product.price | currency }}</div>
+                  <!-- {{ item.final_total | currency }} -->
+                </td>
+                <td class="align-middle ">
+                  <button
+                    type="button"
+                    class="btn btn-outline-danger btn-sm"
+                    @click.prevent="removeCartItem(item.id)"
+                  >
+                    <i class="far fa-trash-alt"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot class="border-top">
+              <tr></tr>
+            </tfoot>
+          </table>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-6">
+          <h3>優惠券折扣</h3>
+          <p>結帳前，可以在購物車中使用優惠券。點擊 “套用優惠券” 按鈕，將優惠券添加到您的訂單中。訂單總額將根據所輸入的優惠券代碼進行金額折抵。</p>
+          <div class="input-group mb-3 input-group-sm mt-3">
+            <input
+              type="text"
+              class="form-control"
+              v-model="coupon_code"
+              placeholder="請輸入優惠碼"
+            />
+            <div class="input-group-append">
+              <button
+                class="btn btn-secondary"
+                type="button"
+                @click="addCouponCode"
+              >
+                套用優惠碼
+              </button>
+            </div>
+           
+          </div>
+             <p class="text-success mt-n3">現在輸入testCode即可享有折扣價喔!</p>
+        
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-6">
+          <h3>購物車總計</h3>
+          <table class="table custom-font-size table-sm">
+          
+            <tbody>
+              <tr v-for="item in cart.carts" :key="item.id">
+                <td colspan="3" class="text-left">小計</td>
+                <td class="align-middle text-right">
+                  {{ item.final_total | currency }}
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3" class="text-left">總計</td>
+                <td class="text-right">{{ cart.total | currency }}</td>
+              </tr>
+              <tr v-if="cart.final_total != cart.total">
+                <td colspan="3" class="text-right text-success">折扣價</td>
+                <td class="text-right text-success">
+                  {{ cart.final_total | currency }}
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="container main-contant py-5">
     <h1 class="text-center mb-3 text-secondary">六角血拼 結帳</h1>
     <section class="form-row align-items-center text-center">
       <div class="col">
@@ -151,6 +257,49 @@
         </div>
       </div>
     </div>
+  </div> -->
   </div>
-    </div>
 </template>
+<style scoped>
+.custom-font-size{
+  font-size: 1rem;
+}
+</style>
+<script>
+import { mapGetters, mapActions } from "vuex";
+export default {
+  data() {
+    return {
+      coupon_code: "",
+    };
+  },
+  methods: {
+    ...mapActions(["getCart"]),
+    //移除購物車內容
+    removeCartItem(product_id) {
+      this.$store.dispatch("removeCartItem", product_id);
+    },
+    //新增優惠券
+    addCouponCode() {
+      const vm = this;
+      const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/coupon`;
+      const coupon = {
+        code: vm.coupon_code,
+      };
+      vm.isLoading = true;
+      this.$http.post(url, { data: coupon }).then((response) => {
+        console.log("addCouponCode", response.data);
+        if (response.data.success) {
+          vm.getCart();
+        } else {
+          this.$bus.$emit("message:push", response.data.message, "danger");
+        }
+        vm.isLoading = false;
+      });
+    },
+  },
+  computed: {
+    ...mapGetters(["cart"]),
+  },
+};
+</script>
