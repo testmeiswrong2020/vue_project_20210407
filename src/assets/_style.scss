@@ -5,8 +5,10 @@
 * ======================================================= */
 body {
   font-family: "Playfair Display", serif;
-  font-weight: 400;
-  font-size: 16px;
+  // font-weight: 400;
+  font-weight: 549;
+  // font-size: 16px;
+  font-size: 18px;
   line-height: 1.7;
   color: #828282;
   background: #fff;
@@ -715,7 +717,8 @@ h1, h2, h3, h4, h5, h6, figure {
 #fh5co-about,
 #fh5co-contact,
 #fh5co-footer {
-  padding: 7em 0;
+  // padding: 7em 0;
+  padding: 2em 0 0em;
   clear: both;
 }
 @media screen and (max-width: 768px) {

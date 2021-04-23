@@ -36,7 +36,7 @@
 
     <div
       class="parallax-bg-fixed"
-      style="background-image:url('https://images.unsplash.com/photo-1503174971373-b1f69850bded?ixlib=rb-1.2.1&auto=format&fit=crop&w=1387&q=80');height:400px"
+      style="background-image:url('images/middlePicInHomePage.jpg');height:400px"
     ></div>
 
     <!-- introduce style section -->
@@ -59,12 +59,12 @@
           <div class="style-intro-img-body">
             <div
               class="img-back mx-auto"
-              style="background-image:url('https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-1.2.1&auto=format&fit=crop&w=1279&q=80')"
+              style="background-image:url('images/profession.jpg')"
             >
               <div class="title right text-white" style="padding-bottom: 11rem;">Profession</div>
               <div
                 class="img-front right"
-                style="background-image:url('https://images.unsplash.com/photo-1517705008128-361805f42e86?ixlib=rb-1.2.1&auto=format&fit=crop&w=1279&q=80')"
+                style="background-image:url('images/profession.jpg')"
               ></div>
             </div>
           </div>

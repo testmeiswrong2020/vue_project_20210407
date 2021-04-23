@@ -1,60 +1,99 @@
 <template>
-  <div class="my-5 row justify-content-center">
-    <form class="col-md-6" @submit.prevent="payOrder">
-      <table class="table">
-        <thead>
-          <th>品名</th>
-          <th>數量</th>
-          <th>單價</th>
-        </thead>
-        <tbody>
-          <tr v-for="item in order.products" :key="item.id">
-            <td class="align-middle">{{ item.product.title }}</td>
-            <td class="align-middle">{{ item.qty }}/{{ item.product.unit }}</td>
-            <td class="align-middle text-right">{{ item.final_total |currency}}</td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="2" class="text-right">總計</td>
-            <td class="text-right">{{ order.total |currency}}</td>
-          </tr>
-        </tfoot>
-      </table>
+  <div>
+    <div class="container py-4">
+      <section class="row text-center">
+        <div class="col-md-4 col-sm-12">
+          <div
+            class="alert alert-light custom-alert alert-rounded mb-0"
+            role="alert"
+          >
+            1.輸入訂單資料
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+           <div v-if="order.is_paid" class="alert  alert-light custom-alert  alert-rounded mb-0" role="alert">
+            2.金流付款
+          </div>
+          <div  v-else class="alert alert-primary alert-rounded mb-0" role="alert">
+            2.金流付款
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12">
+          <div
+            v-if="order.is_paid"
+            class="alert alert-primary alert-rounded mb-0"
+            role="alert"
+          >
+            3.完成
+          </div>
+          <div
+            v-else
+            class="alert alert-light custom-alert alert-rounded mb-0"
+            role="alert"
+          >
+            3.完成
+          </div>
+        </div>
+      </section>
 
-      <table class="table">
-        <tbody>
-          <tr>
-            <th width="100">電子郵件</th>
-            <td>{{ order.user.email }}</td>
-          </tr>
-          <tr>
-            <th>姓名</th>
-            <td>{{ order.user.name }}</td>
-          </tr>
-          <tr>
-            <th  width="120">收件人電話</th>
-            <td>{{ order.user.tel }}</td>
-          </tr>
-          <tr>
-            <th>收件人地址</th>
-            <td>{{ order.user.address }}</td>
-          </tr>
-          <tr>
-            <th>付款狀態</th>
-            <td>
-              <span v-if="!order.is_paid">尚未付款</span>
-              <span v-else class="text-success">付款完成</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="text-right" v-if="order.is_paid === false">
-        <button class="btn btn-danger">確認付款去</button>
+      <div class="mt-5 row justify-content-center">
+        <div class="card col-md-6 shadow">
+          <form @submit.prevent="payOrder" class="container">
+            <table class="table p-5">
+              <tbody>
+                <tr>
+                  <th>下單日期</th>
+                  <td>{{ order.create_at | date }}</td>
+                </tr>
+                <tr>
+                  <th>訂單編號</th>
+                  <td>{{ order.id }}</td>
+                </tr>
+                <tr>
+                  <th width="100">電子郵件</th>
+                  <td>{{ order.user.email }}</td>
+                </tr>
+                <tr>
+                  <th>姓名</th>
+                  <td>{{ order.user.name }}</td>
+                </tr>
+                <tr>
+                  <th width="120">收件人電話</th>
+                  <td>{{ order.user.tel }}</td>
+                </tr>
+                <tr>
+                  <th>收件人地址</th>
+                  <td>{{ order.user.address }}</td>
+                </tr>
+                <tr>
+                  <th>訂單金額</th>
+                  <td>{{ order.total | currency }}</td>
+                </tr>
+                <tr>
+                  <th>付款狀態</th>
+                  <td>
+                    <span v-if="!order.is_paid">尚未付款</span>
+                    <span v-else class="text-success">付款完成</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="text-center rounded" v-if="order.is_paid === false">
+              <button class="btn btn-danger">確認付款去</button>
+            </div>
+          </form>
+        </div>
       </div>
-    </form>
+    </div>
   </div>
 </template>
+<style>
+.custom-alert {
+  color: #6d6050 !important;
+  border-color: #6d6050 !important;
+}
+</style>
+
 <script>
 import $ from "jquery";
 
@@ -85,7 +124,7 @@ export default {
       const vm = this;
       const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/pay/${vm.orderId}`;
       //   const order = vm.form;
-      vm.isLoading = true;
+      vm.$store.dispatch("updateLoading", true);
       this.$http.post(url).then((response) => {
         console.log("payOrder", response.data);
         if (response.data.success) {
@@ -94,7 +133,7 @@ export default {
         } else {
           this.$bus.$emit("message:push", response.data.message, "danger");
         }
-        vm.isLoading = false;
+        vm.$store.dispatch("updateLoading", false);
       });
     },
   },

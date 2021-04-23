@@ -81,6 +81,11 @@ export default new VueRouter({
           component: () => import('./views/ProductDetail.vue'),
         },
         {
+          path: 'coupon_confirm',
+          name: 'CouponConfirm',
+          component: () => import('./views/CouponConfirm.vue'),
+        },
+        {
           path: 'checkout',
           name: 'Checkout',
           component: () => import('./views/Checkout.vue'),

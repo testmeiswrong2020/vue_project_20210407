@@ -42,8 +42,9 @@
                       style="min-width: 350px"
                     >
                       <h6 class="mb-2">已選擇商品</h6>
-                      <div
-                        style="overflow-y: scroll; max-height: 169px"
+                      <div v-if="cart.carts.length ===0" class="text-center py-5" >購物車沒有產品喔 ! !</div>
+                      <div v-if="cart.carts.length > 0"
+                        style="overflow-y: scroll; max-height: 205px"
                         class="border-top"
                       >
                         <table
@@ -94,7 +95,7 @@
                         </span>
                       </div>
                       <div class="border-top">
-                        <router-link to="/checkout">
+                        <router-link to="/coupon_confirm">
                           <span class="btn btn-primary mt-2 btn-sm">
                             <i class="fas fa-cart-plus"></i>
                             結帳去

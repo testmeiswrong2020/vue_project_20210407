@@ -2,8 +2,8 @@
   <div>
     <Alert></Alert>
     <!-- <side-bar></side-bar> -->
-    <div class="">
-      <div class="">
+    <div >
+      <div>
         <nav-bar></nav-bar>
       </div>
       <router-view />

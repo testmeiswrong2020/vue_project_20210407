@@ -2,8 +2,8 @@
 <div>
 <footer id="fh5co-footer" role="contentinfo">
 		<div class="container-fluid ">
-      	<div class="row row-pb-md">
-					<div class="col-md-12 col-sm-12 col-xs-12 col-md-push-1 ">
+      	<div class="row mb-1"><!--row-pb-md-->
+		<div class="col-md-12 col-sm-12 col-xs-12 col-md-push-1 ">
              <div class="row customer-font-size justify-content-around ">
              <ul class="nav">
              <li class="nav-link">
@@ -24,10 +24,7 @@
 			</div>
 			<div class="row copyright">
 				<div class="col-md-12 text-center">
-					<p>
-						<small class="block">Copyright &copy; 安雅. 版權所有.</small> 
-            	<small class="block">僅供學習使用，不做為商業用途</small>		</p>
-					<p>
+						<p>
 						<ul class="fh5co-social-icons">
 						<li><a href="#"><i  class="fab fa-twitter"></i></a></li>
 							<li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
@@ -35,6 +32,10 @@
 							<li><a href="#"><i class="fab fa-instagram-square"></i></a></li>
 						</ul>
 					</p>
+					<p><small class="block mb-2 mt-n2">僅供學習使用，不做為商業用途</small>
+						<small class="block">Copyright &copy; 2021 安雅. 版權所有.</small> 
+            			</p>
+				
 				</div>
 			</div>
 
