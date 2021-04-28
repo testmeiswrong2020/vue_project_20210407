@@ -1,28 +1,25 @@
 <template>
-<div>
-<footer id="fh5co-footer" role="contentinfo">
-		<div class="container-fluid ">
-      	<div class="row mb-1"><!--row-pb-md-->
-		<div class="col-md-12 col-sm-12 col-xs-12 col-md-push-1 ">
-             <div class="row customer-font-size justify-content-around ">
+    <footer id="fh5co-footer" role="contentinfo">
+		<!-- <div class="container-fluid "> -->
+      	 <div class="row mb-1">
+		   <div class="col-md-12 col-sm-12   ">
+             <div class="d-flex  justify-content-around ">
              <ul class="nav">
              <li class="nav-link">
              <router-link to="/product" > 購買商品</router-link>
              </li>
              <li class="nav-link">
-             <router-link to="/common_question">常見問題</router-link>
+             <router-link to="/common-question">常見問題</router-link>
              </li>
               <li  class="nav-link">
              <router-link to="/contact">門市位置</router-link>
              </li>
              <li  class="nav-link">
-            <router-link to="/common_question">常見問題</router-link>
+             <router-link to="/hiring">人才招募</router-link>
              </li>
-           </ul>
-						</div>
-				</div>
-			</div>
-			<div class="row copyright">
+             </ul>
+		     </div>
+	         <div class="row copyright">
 				<div class="col-md-12 text-center">
 						<p>
 						<ul class="fh5co-social-icons">
@@ -37,15 +34,9 @@
             			</p>
 				
 				</div>
-			</div>
-
-		</div>
+			 </div>
+		   </div>
+		 </div>
+		<!-- </div> -->
 	</footer>
-</div>
 </template>
-
-<style scoped>
-.customer-font-size {
-  font-size: 1rem;
-}
-</style>

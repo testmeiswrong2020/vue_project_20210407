@@ -6,7 +6,10 @@
         <div class="col-md-3">
           <!-- 左側選單 (List group) -->
           <div class="p-2 sticky-top products-side-bar">
-            <div class="px-3 py-4 border-top h6 mb-0">商品列表</div>
+            <div class="px-3 py-4 border-top h6 mb-0">
+                <router-link  to="/product">
+              商品列表</router-link> 
+              </div>
             <ul id="accordionProducts" class="navbar-nav">
               <li class="nav-item border-top py-2">
                 <div class="card border-0">
@@ -194,7 +197,7 @@
                         <p>
                           <router-link
                             :to="{
-                              path: '/product_detail',
+                              path: '/product-detail',
                               query: { name: `${item.id}` },
                             }"
                           >
@@ -256,34 +259,21 @@
           <!-- pagination -->
           <nav aria-label="Page navigation" class="my-5">
             <ul class="pagination justify-content-center">
-              <!-- <li class="page-item" v-model="newData" :class="{ 'disabled': page===0 }">
-                <span
-                  class="page-link"
-                 @click.prevent="currentPage=page-2"
-                  >Previous</span
-                >
-              </li> -->
-              <li
-                class="page-item"
-                :class="{ active: currentPage === page - 1 }"
-                v-for="page in filterData.length"
-                :key="page"
-              >
-                <a
-                  class="page-link"
-                  href="#"
-                  @click.prevent="currentPage = page - 1"
-                  >{{ page }}</a
-                >
+              <li class="page-item"   :class="{ 'disabled': currentPage === 0 }">
+                <span class="page-link"
+                 @click.prevent="currentPage=currentPage -1">Previous</span>
               </li>
-              <!-- <li class="page-item" :class="{ 'active': page >0 }">
-                <a
-                  class="page-link"
-                  href="#"
-                   @click.prevent="currentPage=page"
-                  >Next</a
-                >
-              </li> -->
+              <li  class="page-item"
+                :class="{ 'active': currentPage === page - 1 }"
+                v-for="page in filterData.length"
+                :key="page">
+                <span  class="page-link"
+                  @click.prevent="currentPage = page - 1">{{ page }}</span>
+              </li>
+              <li class="page-item" :class="{ 'disabled': currentPage=== (filterData.length-1)}">
+                <span class="page-link"
+                 @click.prevent="currentPage=currentPage +1">Next</span>
+              </li>
             </ul>
           </nav>
         </div>
@@ -345,10 +335,7 @@ export default {
       const vm = this;
       //先過濾資料後才處理後面的分頁
       let filteredData = [];
-      if (
-        vm.$route.fullPath === "/product/" ||
-        vm.$route.fullPath === "/product"
-      ) {
+      if ( vm.$route.fullPath === "/product/" || vm.$route.fullPath === "/product" ) {
         filteredData = vm.products;
       } else {
         let category = vm.$route.params.category;

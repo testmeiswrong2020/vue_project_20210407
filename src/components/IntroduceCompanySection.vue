@@ -2,8 +2,8 @@
   <section>
     <div
       class="bg-cover d-flex justify-content-center flex-column align-items-center introduce-company-section"
-      style="background-image:url('https://images.unsplash.com/photo-1557618159-7d6fe547ae20?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80')"
-    >
+      style="background-image:url('images/lucas-santos-r-UaSYUqF9o-unsplash.jpg')"
+    ><!-- pexels-vitaly-vlasov-1546333-->
       <h2 class="introduce-company-section-title h5 col-md-3 col-5 text-center text-white">傳承品質</h2>
       <p
         class="introduce-company-section-content col-10 text-white text-justify mt-3"
@@ -18,11 +18,7 @@
 
 <style lang="scss">
 .introduce-company-section {
-  min-height: 450px;
-  .introduce-company-section-title {
-  }
-  .introduce-company-section-content {
-  }
+  min-height: 500px;
   .introduce-company-section-btn {
     width: 200px;
     padding: 15px 0;

@@ -4,7 +4,9 @@
       <div>
         <div class="row mx-1">
           <div class="col-md-3 col-xs-2">
-            <div id="fh5co-logo"><a href="/home">二手精品市集</a></div>
+            <div id="fh5co-logo">
+              <router-link to="/home">安雅二手精品</router-link>
+              </div>
           </div>
           <div class="col-md-9 col-xs-10 text-center menu-1">
             <div class="d-flex justify-content-end">
@@ -95,7 +97,7 @@
                         </span>
                       </div>
                       <div class="border-top">
-                        <router-link to="/coupon_confirm">
+                        <router-link to="/coupon-confirm">
                           <span class="btn btn-primary mt-2 btn-sm">
                             <i class="fas fa-cart-plus"></i>
                             結帳去

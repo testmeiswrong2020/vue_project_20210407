@@ -10,6 +10,22 @@
               >常見問題
             </h3>
             <div id="card-110493">
+                <div class="card">
+                <div class="card-header">
+                  <a
+                    class="collapsed card-link"
+                    data-toggle="collapse"
+                    data-parent="#card-110493"
+                    href="#card-element-382522"
+                    >支持店內實物確認</a
+                  >
+                </div>
+                <div id="card-element-382522" class="collapse">
+                  <div class="card-body">
+                    <li>任何商品均可於店內提供實物確認。</li>
+                  </div>
+                </div>
+              </div>
               <div class="card">
                 <div class="card-header">
                   <a
@@ -24,22 +40,12 @@
                   <div class="card-body">
                     <ul>
                       <li>
-                        ※國內（台灣本島及離島）
+                        ※國內（台灣本島及離島）與 國外
                         <ol>
                           【運送方式】― 黑貓宅急便
                         </ol>
                         <ol>
                           【運費】― 免運費！
-                        </ol>
-                      </li>
-                      <li>
-                        ※國外
-                        <ol>
-                          【運送方式】郵局EMS國際快捷
-                        </ol>
-                        <ol>
-                          【運費】―
-                          運費另計，依照EMS報價實報實銷。（詳細請洽網路部人員）
                         </ol>
                       </li>
                     </ul>
@@ -67,8 +73,8 @@
                         分店名(中文)：基隆路分行<br />
                         分店名(英文)：Keelungroad Branch<br />
                         帳號：0118-441-048973<br />
-                        戶名(中文)：阿雅二手精品股份有限公司<br />
-                        戶名(英文)：AYA SECONDHAND BOUTIQUE TAIWAN CO.,LTD.<br />
+                        戶名(中文)：安雅二手精品股份有限公司<br />
+                        戶名(英文)：ENYA SECONDHAND BOUTIQUE TAIWAN CO.,LTD.<br />
                         Swift Code：ESUNTWTP
                       </ol>
                     </li>
@@ -142,6 +148,7 @@
                   </div>
                 </div>
               </div>
+            
             </div>
           </div>
           <div class="col-md-3"></div>

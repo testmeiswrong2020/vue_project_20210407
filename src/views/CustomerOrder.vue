@@ -454,7 +454,7 @@ export default {
       this.$http.post(url, { data: order }).then((response) => {
         console.log("createOrder", response.data);
         if (response.data.success) {
-        vm.$router.push(`/customer_checkout/${response.data.orderId}`);
+        vm.$router.push(`/final-checkout/${response.data.orderId}`);
           // this.getCart();
           //  this.$bus.$emit("message:push", response.data.message, "success");
         } else {

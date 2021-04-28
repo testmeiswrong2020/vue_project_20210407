@@ -18,7 +18,7 @@ export default new VueRouter({
     //登入後畫面router
     {
       path: '/admin',
-      redirect: '/login',
+      redirect: 'login',
       name: 'Dashboard',
       component: () => import('./components/Dashboard.vue'),
       //使用children來製作巢狀router
@@ -71,17 +71,17 @@ export default new VueRouter({
           component: () => import('./views/Product.vue'),
         },
         {
-          path: 'product/:category/:series', //  jewelry/catier
+          path: 'product/:category/:series',
           name: 'FilterProducts',
           component: () => import('./views/Product.vue')
         },
         {
-          path: 'product_detail',
+          path: 'product-detail',
           name: 'ProductDetail',
           component: () => import('./views/ProductDetail.vue'),
         },
         {
-          path: 'coupon_confirm',
+          path: 'coupon-confirm',
           name: 'CouponConfirm',
           component: () => import('./views/CouponConfirm.vue'),
         },
@@ -91,12 +91,17 @@ export default new VueRouter({
           component: () => import('./views/Checkout.vue'),
         },
         {
+          path: 'final-checkout/:orderId',
+          name: 'FinalCheckout',
+          component: () => import('./views/FinalCheckout.vue'),
+        },
+        {
           path: 'contact',
           name: 'Contact',
           component: () => import('./views/Contact.vue'),
         },
         {
-          path: 'common_question',
+          path: 'common-question',
           name: 'CommonQuestion',
           component: () => import('./views/CommonQuestion.vue'),
         },
@@ -106,10 +111,11 @@ export default new VueRouter({
           component: () => import('./views/CustomerOrder.vue'),
         },
         {
-          path: 'customer_checkout/:orderId',
-          name: 'CustomerCheckout',
-          component: () => import('./views/CustomerCheckout.vue'),
+          path: 'hiring',
+          name: 'Hiring',
+          component: () => import('./views/Hiring.vue'),
         },
+     
 
       ],
     },
