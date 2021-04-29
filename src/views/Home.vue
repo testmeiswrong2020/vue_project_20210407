@@ -49,7 +49,6 @@
         height: 400px;
       "
     ></div>
-    <!--middlePicInHomePage robin-spielmann-uzjd9nNtqGg-unsplash-->
 
     <!-- introduce style section -->
     <div class="container-fluid py-4">
@@ -59,7 +58,7 @@
             class="style-intro-info-body big-title h-100 text-center text-primary d-flex flex-column justify-content-center"
           >
             <h3 class="name mb-0">
-              <span class="border border-top-0 border-bottom-0 px-3"
+              <span class="border border-top-0 border-bottom-0 px-3 text-primary font-weight-bold"
                 >保存經典</span
               >
             </h3>
@@ -98,7 +97,7 @@
             class="style-intro-info-body big-title text-center text-primary h-100 d-flex flex-column justify-content-center"
           >
             <h3 class="name mb-0">
-              <span class="border border-top-0 border-bottom-0 px-3"
+              <span class="border border-top-0 border-bottom-0 px-3 text-primary font-weight-bold"
                 >專業鑑定</span
               >
             </h3>
@@ -132,7 +131,7 @@
     <div class="container-fluid my-4">
       <div class="big-title py-3">
         <h2 class="name text-primary mb-0">認識我們的鑑定師</h2>
-        <div class="eng">Our Appraiser</div>
+        <div class="eng text-dark  ">Our Appraisers</div>
       </div>
 
       <div class="row">
@@ -145,12 +144,12 @@
               ></div>
             </div>
             <div class="card-body-content">
-              <div class="name">
-                <h4 class="px-3">Trouvé</h4>
-                <span class="px-3 text-uppercase">jewelry appraiser</span>
+              <div class="name ">
+                <h4 class="px-3 ">Trouvé</h4>
+                <span class="px-3 text-uppercase">appraiser</span>
               </div>
               <div class="content">
-                <span class="px-3 text-justify"
+                <span class="px-3 text-justify "
                   >這個產業有很多變動，工作型態十分新奇，也很有挑戰性以及前瞻性。每天我都在挑戰自己。不只是面對不同層次的客戶，也要吸收日新月異的資訊。
                   <br />— 珠寶鑑定師 Trouvé
                 </span>
@@ -167,13 +166,12 @@
               ></div>
             </div>
             <div class="card-body-content">
-              <div class="name">
-                <h4 class="pl-3">Sophía</h4>
-                <span class="pl-3">BOUTIQUE APPRAISER</span>
+              <div class="name ">
+                <h4 class="pl-3 ">Sophía</h4>
+                <span class="pl-3">APPRAISER</span>
               </div>
               <div class="content">
-                <span class="px-3 text-justify">
-將金屬材質、機芯、錶面皮料、金屬等不可變的物理性質與標準品資料庫進行對比，並將壓紋技術、封線車工等工序比對為輔，透過嚴格而完整的鑑定程序，為您把關精品真偽。
+                <span class="px-3 text-justify">將金屬材質、機芯、錶面皮料、金屬等不可變的物理性質與標準品資料庫進行對比，並將壓紋技術、封線車工等工序比對為輔，透過嚴格而完整的鑑定程序，為您把關精品真偽。
                   <br />— 精品鑑定師 Sophía
                 </span>
               </div>
@@ -186,6 +184,7 @@
     <introduce-company-section></introduce-company-section>
   </div>
 </template>
+
 
 <script>
 // 自訂元件

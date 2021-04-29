@@ -2,14 +2,14 @@
   <section>
     <div
       class="bg-cover d-flex justify-content-center flex-column align-items-center introduce-company-section"
-      style="background-image:url('images/lucas-santos-r-UaSYUqF9o-unsplash.jpg')"
-    ><!-- pexels-vitaly-vlasov-1546333-->
-      <h2 class="introduce-company-section-title h5 col-md-3 col-5 text-center text-white">傳承品質</h2>
+      style="background-image:url('images/introduteCompany.jpg')"
+    >
+      <h2 class="introduce-company-section-title h5 col-md-3 col-5 text-center text-white">追求時尚</h2>
       <p
         class="introduce-company-section-content col-10 text-white text-justify mt-3"
-      >因醉心於歐洲美學的深厚底蘊，與其工藝的剛毅究極。我們推崇精湛的工藝，一絲不苟地關注細節，堅持使用最高品質的材料。從裡到外，給全家人最挑剔的照顧。我們相信生活永遠可以有更好的方式，為熱愛也考究生活的您，營造完美宜人的空間氛圍。</p>
+      >歡迎蒞臨台灣時尚網購新據點！本網站擁有逾百知名國際精品品牌橫跨男女鞋子、飾品等商品系列。無論是穩重知性的包款、略顯尊榮的珠寶還是頂級奢華的腕錶，您都能在此站一次性逛齊全，所有最新最hot的流行元素，讓您搶先踏入潮流趨勢，跟隨我們的脚步一起引領亞洲時尚潮流吧 ! !</p>
       <router-link
-        to="/products"
+        to="/product"
         class="introduce-company-section-btn btn btn-outline-light mt-4"
       >SHOP NOW</router-link>
     </div>

@@ -3,7 +3,7 @@
     <div class="container">
       <div class="big-title mb-md-3">
         <h2 class="name text-primary mb-0">商品專區</h2>
-        <span class="eng m-0">Products</span>
+        <span class="eng m-0 text-dark  custom-font-family">Products</span>
       </div>
       <div class="row no-gutters">
            <!-- <div class="col-md-6"  v-for="(item,index) in cardContent" :key="index">
@@ -19,8 +19,6 @@
             </router-link>
           </div>
         </div> -->
-
-
         <div class="col-md-6">
           <div class="home-products-items">
             <router-link to="/product">
@@ -83,6 +81,13 @@
     </div>
   </div>
 </template>
+
+<style lang="scss">
+.custom-font-family{
+     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+}
+</style>
+
 <script>
 import $ from 'jquery'
 export default {
