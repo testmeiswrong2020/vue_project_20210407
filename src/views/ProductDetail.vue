@@ -31,7 +31,6 @@
                     {{ productdetail.price | currency }}
                   </h5>
                 </div>
-                <!--unit-->
                 <button
                   class="btn btn-primary w-100"
                   @click.prevent="addToCart(productdetail.id)"

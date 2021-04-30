@@ -4,8 +4,10 @@
       <div class="mx-5 my-1">
         <div class="row row-cols-md-3 row-cols-sm-1">
           <div class="col-md-3 col-9">
-            <div id="fh5co-logo">
-              <router-link to="/home">安雅二手精品</router-link>
+            <div id="fh5co-logo" class="">
+              <router-link to="/home">
+                <img src="images/logo.svg" >
+              </router-link>
             </div>
           </div>
           <div class="col-md-8 menu-1">

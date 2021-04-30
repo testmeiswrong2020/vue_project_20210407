@@ -115,7 +115,11 @@ export default new VueRouter({
           name: 'Hiring',
           component: () => import('./views/Hiring.vue'),
         },
-     
+        {
+          path: 'promotion',
+          name: 'Promotion',
+          component: () => import('./views/Promotion.vue'),
+        },
 
       ],
     },

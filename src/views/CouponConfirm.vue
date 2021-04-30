@@ -97,7 +97,7 @@
             </div>
           </div>
           <p class="text-success mt-n3">
-            現在輸入 30OFFTODAY 即可享有折扣價喔!
+            現在輸入 SS10 即可享有折扣價喔!
           </p>
         </div>
         <div class="col-md-6 col-sm-6 col-lg-6">
