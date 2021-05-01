@@ -7,9 +7,8 @@
           <!-- 左側選單 (List group) -->
           <div class="p-2 sticky-top products-side-bar">
             <div class="px-3 py-4 border-top h6 mb-0">
-                <router-link  to="/product">
-              商品列表</router-link> 
-              </div>
+              <router-link to="/product"> 商品列表</router-link>
+            </div>
             <ul id="accordionProducts" class="navbar-nav">
               <li class="nav-item border-top py-2">
                 <div class="card border-0">
@@ -80,7 +79,7 @@
                           class="nav-item"
                           v-for="item in brands[1]"
                           :key="item"
-                              @click.prevent="showDifferentJumbotron(1)"
+                          @click.prevent="showDifferentJumbotron(1)"
                         >
                           <router-link
                             class="nav-link h7 text-capitalize font-weight-normal mb-0"
@@ -121,7 +120,7 @@
                           class="nav-item"
                           v-for="item in brands[2]"
                           :key="item"
-                            @click.prevent="showDifferentJumbotron(2)"
+                          @click.prevent="showDifferentJumbotron(2)"
                         >
                           <router-link
                             class="nav-link text-capitalize h7 font-weight-normal mb-0"
@@ -162,7 +161,7 @@
                           class="nav-item"
                           v-for="item in brands[3]"
                           :key="item"
-                            @click.prevent="showDifferentJumbotron(3)"
+                          @click.prevent="showDifferentJumbotron(3)"
                         >
                           <router-link
                             class="nav-link h7 text-capitalize font-weight-normal mb-0"
@@ -256,26 +255,35 @@
               </div>
             </div>
           </div>
-          <!-- pagination -->
+          <!-- pagination --start-->
           <nav aria-label="Page navigation" class="my-5">
             <ul class="pagination justify-content-center">
-              <li class="page-item"   :class="{ 'disabled': currentPage === 0 }">
-                <span class="page-link"
-                 @click.prevent="currentPage=currentPage -1">Previous</span>
+              <li class="page-item" :class="{ disabled: currentPage === 0 }">
+                <span class="page-link" @click.prevent="currentPage = currentPage - 1"
+                  >Previous</span
+                >
               </li>
-              <li  class="page-item"
-                :class="{ 'active': currentPage === page - 1 }"
-                v-for="page in filterData.length"
-                :key="page">
-                <span  class="page-link"
-                  @click.prevent="currentPage = page - 1">{{ page }}</span>
+              <li
+                class="page-item"
+                :class="{ active: currentPage === page }"
+                v-for="(index, page) in filterData.length"
+                :key="index"
+              >
+                <span class="page-link" @click.prevent="currentPage = page">{{
+                  page + 1
+                }}</span>
               </li>
-              <li class="page-item" :class="{ 'disabled': currentPage=== (filterData.length-1)}">
-                <span class="page-link"
-                 @click.prevent="currentPage=currentPage +1">Next</span>
+              <li
+                class="page-item"
+                :class="{ disabled: currentPage === filterData.length - 1 }"
+              >
+                <span class="page-link" @click.prevent="currentPage = currentPage + 1"
+                  >Next</span
+                >
               </li>
             </ul>
           </nav>
+          <!-- pagination --end-->
         </div>
       </div>
     </div>
@@ -296,6 +304,7 @@ export default {
         loadingItem_addToCart: "s",
       },
       currentPage: 0,
+      page: 1,
     };
   },
 
@@ -324,10 +333,12 @@ export default {
         vm.status.loadingItem_addToCart = "s";
       });
     },
-    //Jumbotron
-     showDifferentJumbotron(chosedindex){
-     this.$store.dispatch("showDifferentJumbotron", chosedindex);
-    }
+    //顯示 全系列文案
+    showDifferentJumbotron(chosedindex) {
+      const vm = this;
+      vm.currentPage = 0; //要歸零不然點左方後資料會出不來
+      vm.$store.dispatch("showDifferentJumbotron", chosedindex);
+    },
   },
   computed: {
     ...mapGetters(["brands", "products"]),
@@ -335,9 +346,14 @@ export default {
       const vm = this;
       //先過濾資料後才處理後面的分頁
       let filteredData = [];
-      if ( vm.$route.fullPath === "/product/" || vm.$route.fullPath === "/product" ) {
+
+      if (
+        vm.$route.fullPath === "/product/" ||
+        vm.$route.fullPath === "/product"
+      ) {
         filteredData = vm.products;
       } else {
+        //  console.log("---currentPage------", currentPage);
         let category = vm.$route.params.category;
         let series = vm.$route.params.series;
         if (vm.$route.params.category === "jewelry") {
@@ -405,9 +421,12 @@ export default {
           //每10筆資料加入一個陣列
           newData.push([]);
         }
-        const page = parseInt(i / 10); //取頁數
+        // const page = parseInt(i / 10); //取頁數
+        let page = parseInt(i / 10); //取頁數
         newData[page].push(item); //把指定頁數資料push進
+        // console.log("page", page); //0 1
       });
+
       return newData;
     },
   },

@@ -15,7 +15,7 @@ export default new Vuex.Store({
     cart: {
       carts: []
     },
-    chosedindex:'0'
+    chosedindex:0
   },
   actions: { //等於method
     updateLoading(context, status) {
@@ -58,7 +58,7 @@ export default new Vuex.Store({
         if (response.data.data.carts) {
           context.commit('CART', response.data.data);
         }
-        console.log("getCart", response.data.data);
+        // console.log("getCart", response.data.data);
       }).catch(function (error) {
         console.log(error);
       });;
@@ -124,6 +124,8 @@ export default new Vuex.Store({
       return state.productdetail;
     },
     chosedindex(state) {
+      // let titlePOS = $('.page-link').text();
+      // console.log("titlePOS",titlePOS);
       return state.chosedindex;
     },
     brands(state) {
