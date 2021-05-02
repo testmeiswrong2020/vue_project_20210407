@@ -111,9 +111,9 @@ export default new VueRouter({
           component: () => import('./views/CustomerOrder.vue'),
         },
         {
-          path: 'hiring',
-          name: 'Hiring',
-          component: () => import('./views/Hiring.vue'),
+          path: 'term-of-use',
+          name: 'TermOfUse',
+          component: () => import('./views/TermOfUse.vue'),
         },
         {
           path: 'promotion',

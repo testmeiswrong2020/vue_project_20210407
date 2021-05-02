@@ -15,7 +15,7 @@
              <router-link to="/contact">門市位置</router-link>
              </li>
              <li  class="nav-link">
-             <router-link to="/hiring">人才招募</router-link>
+             <router-link to="/term-of-use">使用條款</router-link>
              </li>
              </ul>
 		     </div>

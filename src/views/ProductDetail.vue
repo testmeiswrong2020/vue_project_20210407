@@ -87,11 +87,11 @@
               <!--        hooper---start---       -->
               <hooper :itemsToShow="4"
                 :wheelControl="false"
-                style="height: 55vh"
+                style="height: 430px"
                 :centerMode="false"
                 class="row justify-content-center mt-4 mb-5">
                 <slide v-for="(item, index) in filterSlideData" :key="index">
-                  <div class="card shadow-sm rounded-0   ml-4" >
+                  <div class="card shadow-sm rounded-0   ml-3" >
                     <div class="text-center animate-box">
                       <div class="product">
                         <div class="product-grid" style="height:280px" :style="`background-image: url(${item.imageUrl})`">

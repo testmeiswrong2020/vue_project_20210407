@@ -259,7 +259,9 @@
           <nav aria-label="Page navigation" class="my-5">
             <ul class="pagination justify-content-center">
               <li class="page-item" :class="{ disabled: currentPage === 0 }">
-                <span class="page-link" @click.prevent="currentPage = currentPage - 1"
+                <span
+                  class="page-link"
+                  @click.prevent="currentPage = currentPage - 1"
                   >Previous</span
                 >
               </li>
@@ -277,7 +279,9 @@
                 class="page-item"
                 :class="{ disabled: currentPage === filterData.length - 1 }"
               >
-                <span class="page-link" @click.prevent="currentPage = currentPage + 1"
+                <span
+                  class="page-link"
+                  @click.prevent="currentPage = currentPage + 1"
                   >Next</span
                 >
               </li>
