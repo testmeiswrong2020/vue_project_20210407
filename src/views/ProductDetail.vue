@@ -22,12 +22,15 @@
                 </h3>
                 <h6 class="text-capitalize">{{ productdetail.title }}</h6>
                 <div class="d-flex justify-content-start">
-                  <del
-                    ><h6 class="mr-2 mt-1 custom-font-family">
+                  <del v-if="productdetail.origin_price > productdetail.price">
+                    <h6 class="mr-2 mt-1 custom-font-family">
                       {{ productdetail.origin_price | currency }}
-                    </h6></del
-                  >
-                  <h5 class="text-success custom-font-family">
+                    </h6>
+                  </del>
+                 <h5 class="mr-2 mt-1 custom-font-family" v-if="productdetail.origin_price <= productdetail.price">
+                      {{ productdetail.origin_price | currency }}
+                  </h5>
+                  <h5 class="text-success custom-font-family" v-if="productdetail.origin_price > productdetail.price">
                     {{ productdetail.price | currency }}
                   </h5>
                 </div>
@@ -108,13 +111,15 @@
                             <h5 class="text-capitalize badge-outline badge badge-primary badge-pill">
                               {{ item.category }}
                             </h5>
-                            <span class="price"><del>原價 {{ item.origin_price | currency }}</del></span>
+                            <span class="price"><del v-if="item.origin_price>item.price">原價 {{ item.origin_price | currency }}</del>
+                            <span v-if="item.origin_price<=item.price">原價 {{ item.origin_price | currency }}</span>
+                            </span>
                           </div>
                           <div class="d-flex justify-content-between mt-n1">
                             <h6 class="text-capitalize custom-font-size">
                               {{ item.title }}
                             </h6>
-                            <span class="price">特價 {{ item.price | currency }}</span>
+                            <span class="price"  v-if="item.origin_price>item.price">特價 {{ item.price | currency }}</span>
                           </div>
                         </div>
                       </div>
