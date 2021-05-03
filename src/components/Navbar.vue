@@ -1,36 +1,35 @@
 <template>
   <div>
-    <nav class="fh5co-nav" role="navigation">
-      <div class="mx-5 my-1">
-        <div class="row row-cols-md-3 row-cols-sm-1">
-          <div class="col-md-3 col-9">
-            <div id="fh5co-logo" class="">
-              <router-link to="/home">
-                <img src="images/logo.svg" >
+    <div class="pl-2">
+      <nav class="fh5co-nav navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <div id="fh5co-logo">
+            <router-link to="/home">
+              <img src="images/logo.svg" />
+            </router-link>
+          </div>
+          <button
+            class="btn navbar-toggler"
+            data-toggle="collapse"
+            data-target="#ftco-nav"
+            aria-controls="ftco-nav"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="text-dark"
+              ><i class="fas fa-bars fa-lg"></i> MENU</span
+            >
+          </button>
+          <div class="collapse navbar-collapse" id="ftco-nav">
+            <ul class="navbar-nav ml-auto">
+              <router-link to="/product">
+                <li class="nav-item">商品</li>
               </router-link>
-            </div>
-          </div>
-          <div class="col-md-8 menu-1">
-            <div class="d-flex justify-content-end mt-1">
-              <ul class="text-center">
-                <li>
-                  <router-link to="/product">商品</router-link>
-                </li>
-                <li>
-                  <router-link to="/promotion">最新消息</router-link>
-                </li>
-                <li>
-                  <router-link to="/contact">門市位置</router-link>
-                </li>
-                <!-- <li>
-                  <router-link to="/login">會員登入</router-link>
-                </li> -->
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-1 col-3">
-            <ul class="text-center">
-              <li>
+              <router-link to="/promotion">
+                <li class="nav-item">最新消息</li>
+              </router-link>
+              <router-link to="/contact"><li class="nav-item">門市位置</li>
+              </router-link>
+              <li class="nav-item">
                 <div class="dropdown ml-auto">
                   <button
                     class="btn btn-sm btn-cart"
@@ -120,8 +119,9 @@
             </ul>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+      <!-- END nav -->
+    </div>
   </div>
 </template>
 <script>
