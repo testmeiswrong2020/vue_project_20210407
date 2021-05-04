@@ -105,11 +105,11 @@ export default new VueRouter({
           name: 'CommonQuestion',
           component: () => import('./views/CommonQuestion.vue'),
         },
-        {
-          path: 'customer_order',
-          name: 'CustomerOrder',
-          component: () => import('./views/CustomerOrder.vue'),
-        },
+        // {
+        //   path: 'customer_order',
+        //   name: 'CustomerOrder',
+        //   component: () => import('./views/CustomerOrder.vue'),
+        // },
         {
           path: 'term-of-use',
           name: 'TermOfUse',

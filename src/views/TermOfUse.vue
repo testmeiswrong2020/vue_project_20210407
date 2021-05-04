@@ -1,5 +1,5 @@
 <template>
-  <div  id="fh5co-contact">
+  <div  id="fh5co-contact" class="px-2">
     <div class="container">
       <h3 class="wow fadeInDown">網站使用條款</h3>
       <div class="text">
