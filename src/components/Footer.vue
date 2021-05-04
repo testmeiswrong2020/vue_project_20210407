@@ -1,27 +1,18 @@
 <template>
     <footer id="fh5co-footer" role="contentinfo">
-		<!-- <div class="container-fluid "> -->
       	 <div class="row mb-1">
-		   <div class="col-md-12 col-sm-12   ">
+		   <div class="col-md-12 col-sm-12   col-lg-12 ">
              <div class="d-flex  justify-content-around ">
              <ul class="nav">
-             <li class="nav-link">
-             <router-link to="/product" > 購買商品</router-link>
-             </li>
-             <li class="nav-link">
-             <router-link to="/common-question">常見問題</router-link>
-             </li>
-              <li  class="nav-link">
-             <router-link to="/contact">門市位置</router-link>
-             </li>
-             <li  class="nav-link">
-             <router-link to="/term-of-use">使用條款</router-link>
-             </li>
+             <router-link to="/product" > <li class="nav-link"> 購買商品  </li></router-link>
+             <router-link to="/common-question"><li class="nav-link">常見問題</li></router-link>
+             <router-link to="/contact"> <li  class="nav-link">門市位置 </li></router-link>
+             <router-link to="/term-of-use">  <li  class="nav-link">使用條款 </li></router-link>
              </ul>
 		     </div>
 	         <div class="row copyright">
 				<div class="col-md-12 text-center">
-						<p>
+					<p>
 						<ul class="fh5co-social-icons">
 						<li><a href="#"><i  class="fab fa-twitter"></i></a></li>
 							<li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
@@ -37,6 +28,5 @@
 			 </div>
 		   </div>
 		 </div>
-		<!-- </div> -->
 	</footer>
 </template>
