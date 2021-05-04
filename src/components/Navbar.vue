@@ -30,7 +30,7 @@
               <router-link to="/contact"><li class="nav-item">門市位置</li>
               </router-link>
               <li class="nav-item">
-                <div class="dropdown ml-auto">
+                <div class="dropdown ml-auto pr-2">
                   <button
                     class="btn btn-sm btn-cart"
                     data-toggle="dropdown"
