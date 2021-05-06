@@ -8,7 +8,7 @@
         </div>
         <div class="row justify-content-center">
           <div class="col-10">
-            <img class="w-100" src="images/coupon.jpg" alt />
+            <img class="w-100" src="img/coupon.jpg" alt />
           </div>
         </div>
       </div>
