@@ -165,7 +165,7 @@ export default {
       const vm = this;
       const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/coupon`;
       const coupon = {
-        code: vm.coupon_code,
+        code: vm.coupon_code.trim(),
       };
       vm.$store.dispatch("updateLoading", true);
       this.$http.post(url, { data: coupon }).then((response) => {
