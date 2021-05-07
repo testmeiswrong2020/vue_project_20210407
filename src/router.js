@@ -105,11 +105,6 @@ export default new VueRouter({
           name: 'CommonQuestion',
           component: () => import('./views/CommonQuestion.vue'),
         },
-        // {
-        //   path: 'customer_order',
-        //   name: 'CustomerOrder',
-        //   component: () => import('./views/CustomerOrder.vue'),
-        // },
         {
           path: 'term-of-use',
           name: 'TermOfUse',
@@ -123,23 +118,5 @@ export default new VueRouter({
 
       ],
     },
-
-    // {
-    //     path: '/',
-    //     name: 'Dashboard',
-    //     component:() => import('./views/Dashboard.vue'), 
-    //     children: [
-    //         {
-    //             path: 'customer_order',
-    //             name: 'CustomerOrder',
-    //             component:() => import('./views/CustomerOrder.vue'), 
-    //         },
-    //         {
-    //             path: 'customer_checkout/:orderId',
-    //             name: 'CustomerCheckout',
-    //             component:() => import('./views/CustomerCheckout.vue'), 
-    //         },
-    //     ],
-    // },
   ],
 });

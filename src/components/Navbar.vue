@@ -14,7 +14,8 @@
             data-target="#ftco-nav"
             aria-controls="ftco-nav"
             aria-expanded="false"
-            aria-label="Toggle navigation">
+            aria-label="Toggle navigation"
+          >
             <span class="text-dark"
               ><i class="fas fa-bars fa-lg"></i> MENU</span
             >
@@ -27,7 +28,8 @@
               <router-link to="/promotion">
                 <li class="nav-item">最新消息</li>
               </router-link>
-              <router-link to="/contact"><li class="nav-item">門市位置</li>
+              <router-link to="/contact"
+                ><li class="nav-item">門市位置</li>
               </router-link>
               <li class="nav-item">
                 <div class="dropdown ml-auto pr-2">
@@ -58,12 +60,12 @@
                     </div>
                     <div
                       v-if="cart.carts.length > 0"
-                      style="overflow-y: scroll; max-height: 205px"
+                      style="overflow-y: scroll; max-height: 214px"
                       class="border-top"
                     >
                       <table
                         class="table table-sm table-scroll"
-                        style="font-size: 0.6rem"
+                        style="font-size: 0.6rem;    margin-bottom: -0.01px;"
                       >
                         <tbody>
                           <tr v-for="item in cart.carts" :key="item.id">
@@ -78,8 +80,9 @@
                             </td>
                             <td class="align-middle w-25">
                               <img
-                                :src="item.product.imageUrl"
                                 class="img-fluid"
+                                style="width: 40px; height: 40px"
+                                :src="item.product.imageUrl"
                               />
                             </td>
                             <td class="align-middle w-50">
@@ -106,12 +109,17 @@
                       </span>
                     </div>
                     <div class="border-top">
-                      <router-link to="/coupon-confirm">
-                        <span class="btn btn-primary mt-2 btn-sm">
-                          <i class="fas fa-cart-plus"></i>
-                          結帳去
-                        </span>
-                      </router-link>
+                      <div class="row justify-content-center mt-n3 mb-n4">
+                        <router-link
+                            to="/coupon-confirm"
+                            :event="cart.total !== 0 ? 'click' : ''"
+                            :disabled="cart.total === 0"> 
+                        <button  type="button"
+                          class=" btn  btn-primary"
+                          :disabled="cart.total === 0"> <span class=" text-white">
+                            <i class="fas fa-cart-plus"></i> 結帳去</span>
+                        </button></router-link>
+                      </div>
                     </div>
                   </div>
                 </div>
