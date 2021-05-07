@@ -87,7 +87,7 @@
                     placeholder="請輸入電子信箱"
                     required
                   />
-                  <span class="invalid-feedback">{{ errors[0] }}</span>
+                  <span class="text-danger">{{ errors[0] }}</span>
                 </div>
               </validation-provider>
 
@@ -192,7 +192,7 @@
                       </div>
                     </div>
                   </form>
-                   <button @click.prevent="createOrder" class="btn btn-outline-success w-100 mt-3" :disabled="invalid">
+                   <button @click.prevent="createOrder" class="btn btn-success w-100 mt-3" :disabled="invalid">
                   送出訂單
                 </button>
                 </div>
