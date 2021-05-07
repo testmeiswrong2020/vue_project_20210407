@@ -3,22 +3,21 @@
     <div class="container ">
       <section class="row text-center">
         <div class="col-md-4 col-sm-12">
-          <div class="alert alert-primary alert-rounded mb-0" role="alert">
+          <div class="alert alert-primary  alert-rounded mb-2" role="alert">
             1.輸入訂單資料
           </div>
         </div>
         <div class="col-md-4 col-sm-12">
           <div
-            class="alert alert-light border-primary text-primary alert-rounded mb-0"
+            class="alert alert-light border-primary text-primary alert-rounded mb-2"
             role="alert"
           >
-            <!--border-primary text-primary-->
             2.金流付款
           </div>
         </div>
         <div class="col-md-4 col-sm-12">
           <div
-            class="alert alert-light border-primary text-primary alert-rounded mb-0"
+            class="alert alert-light border-primary text-primary alert-rounded mb-2"
             role="alert"
           >
             3.完成
@@ -26,7 +25,7 @@
         </div>
       </section>
       <validation-observer v-slot="{ invalid }">
-        <section class="row justify-content-center mt-5">
+        <section class="row justify-content-center mt-4">
           <div class="col-md-6">
             <h5 class="mb-2 text-center">訂單資訊</h5>
 
@@ -137,7 +136,7 @@
                     <th>小計</th>
                   </thead>
                   <tbody>
-                    <tr v-for="item in cart.carts" :key="item.id">
+                    <tr v-for="(item,index) in cart.carts" :key="index">
                       <td class="align-middle" colspan="2">
                         {{ item.product.title }} X {{ item.qty }}
                       </td>

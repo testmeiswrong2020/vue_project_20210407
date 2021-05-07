@@ -4,31 +4,31 @@
       <section class="row text-center">
         <div class="col-md-4 col-sm-12">
           <div
-            class="alert alert-light custom-alert alert-rounded mb-0"
+            class="alert alert-light custom-alert alert-rounded mb-2"
             role="alert"
           >
             1.輸入訂單資料
           </div>
         </div>
         <div class="col-md-4 col-sm-12">
-           <div v-if="order.is_paid" class="alert  alert-light custom-alert  alert-rounded mb-0" role="alert">
+           <div v-if="order.is_paid" class="alert  alert-light custom-alert  alert-rounded mb-2" role="alert">
             2.金流付款
           </div>
-          <div  v-else class="alert alert-primary alert-rounded mb-0" role="alert">
+          <div  v-else class="alert alert-primary alert-rounded mb-2" role="alert">
             2.金流付款
           </div>
         </div>
         <div class="col-md-4 col-sm-12">
           <div
             v-if="order.is_paid"
-            class="alert alert-primary alert-rounded mb-0"
+            class="alert alert-primary alert-rounded mb-2"
             role="alert"
           >
             3.完成
           </div>
           <div
             v-else
-            class="alert alert-light custom-alert alert-rounded mb-0"
+            class="alert alert-light custom-alert alert-rounded mb-2"
             role="alert"
           >
             3.完成
@@ -36,9 +36,9 @@
         </div>
       </section>
 
-      <div class="my-5 row justify-content-center">
-        <div class="card col-md-6 shadow">
-          <form @submit.prevent="payOrder" class="container">
+      <div class="mb-5 mt-4 row justify-content-center">
+        <div class="card col-md-6 shadow mx-3">
+          <form @submit.prevent="payOrder">
             <table class="table p-5">
               <tbody>
                 <tr>
