@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="container my-5">
+  <div class="pt-4 pb-5">
+    <div class="container">
       <div class="row">
         <div class="col-md-12 col-sm-6 col-lg-12 mb-5">
           <h3>購物車清單</h3>
@@ -19,13 +19,13 @@
           </div>
           <div class="">
             <table
-              class="table custom-font-size table-sm"
+              class="table  table-sm"
               v-if="cart.carts.length > 0"
             >
               <thead>
                 <th>品名</th>
-                <th>數量</th>
                 <th>單價</th>
+                <th>數量</th>
                 <th></th>
               </thead>
               <tbody>
@@ -34,26 +34,39 @@
                     <div class="row no-gutters">
                       <div class="col-md-2">
                         <img
-                          class="img-fluid img-thumbnail"
+                          class="img-fluid pr-3 py-1 pl-1"
+                          style="width: 80px;height:60px"
                           :src="`${item.product.imageUrl}`"
                           alt=""
                         />
                       </div>
-                      <div class="col-md-10 pl-3">
-                        {{ item.product.title }}
+                      <div class="col-md-10">
+                        <div class="d-flex align-items-center h-100">
+                        <span class="text-nowrap ">{{
+                          item.product.title
+                        }}</span>
                         <div class="text-success" v-if="item.coupon">
                           已套用優惠券
-                        </div>
+                        </div></div>
                       </div>
                     </div>
                   </td>
+               
                   <td class="align-middle w-25">
-                    {{ item.qty }}/{{ item.product.unit }}
+                    <div  :class="[`${windowWidth >  1024 ? 'd-inline-flex':''}`]">
+                         <del class="pr-1" v-if="item.product.origin_price > item.product.price">
+                           {{ item.product.origin_price | currency }}
+                         </del>
+                         <div v-if="item.product.origin_price <= item.product.price">
+                         {{ item.product.origin_price | currency }}
+                         </div>
+                         <div class="text-success" v-if="item.product.origin_price > item.product.price">
+                         {{ item.product.price | currency }}
+                         </div>
+                    </div>
                   </td>
-                  <td class="align-middle w-25">
-                    <!-- <del> {{ item.product.origin_price | currency }}</del><br>
-                    <div class="text-success">{{ item.product.price | currency }}</div> -->
-                    {{ item.final_total | currency }}
+                   <td class="align-middle w-25">
+                    {{ item.qty }}/{{ item.product.unit }}
                   </td>
                   <td class="align-middle">
                     <button
@@ -74,10 +87,10 @@
         </div>
         <div class="col-md-6 col-sm-6 col-lg-6">
           <h3>優惠券折扣</h3>
-          <p class="text-dark">
+          <!-- <p class="text-dark">
             結帳前在購物車中使用優惠券。點擊 “套用優惠券”
             按鈕，將優惠券添加到您的訂單中。訂單總額將根據所輸入的優惠券代碼進行金額折抵。
-          </p>
+          </p> -->
           <!--商品套用優惠券後無法取消折抵，若欲取消金額折抵，請重新訂購商品。-->
           <div class="input-group mb-3 input-group-sm mt-3">
             <input
@@ -96,58 +109,22 @@
               </button>
             </div>
           </div>
-          <p class="text-success mt-n3">
-            現在輸入 SS10 即可享有折扣價喔!
-          </p>
+          <p class="text-success mt-n3">現在輸入 SS10 即可享有折扣價喔!</p>
         </div>
         <div class="col-md-6 col-sm-6 col-lg-6">
           <h3>購物車總計</h3>
-          <table class="table custom-font-size table-sm">
+          <table class="table  table-sm">
             <tbody>
               <tr>
-                <!--v-for="item in cart.carts" :key="item.id"-->
                 <td colspan="3" class="text-left">小計</td>
-                <!-- <td class="align-middle text-right">
-                  {{ item.final_total | currency }}
-                </td> -->
-                <td class="align-middle text-right">
+                <td class="align-middle text-right font-weight-normal">
                   {{ cart.total | currency }}
-                </td>
-              </tr>
-              <tr>
-                <td colspan="3" class="text-left">寄送方式</td>
-                <td>
-                  <form class="float-right">
-                    <div class="custom-control custom-radio">
-                      <input
-                        type="radio"
-                        id="customRadio1"
-                        name="customRadio"
-                        class="custom-control-input"
-                        checked
-                      />
-                      <label class="custom-control-label" for="customRadio1"
-                        >台灣地區宅配</label
-                      >
-                    </div>
-                    <div class="custom-control custom-radio">
-                      <input
-                        type="radio"
-                        id="customRadio2"
-                        name="customRadio"
-                        class="custom-control-input"
-                      />
-                      <label class="custom-control-label" for="customRadio2"
-                        >國外地區宅配</label
-                      >
-                    </div>
-                  </form>
                 </td>
               </tr>
             </tbody>
             <tfoot>
-              <tr>
-                <td colspan="3" class="text-left">總計</td>
+              <tr class="font-weight-bold">
+                <td colspan="3" class=" text-left">總計</td>
                 <td class="text-right">{{ cart.total | currency }}</td>
               </tr>
               <tr v-if="cart.final_total != cart.total">
@@ -158,26 +135,23 @@
               </tr>
             </tfoot>
           </table>
-          <router-link to="/checkout">
-            <button class="btn btn-primary float-right">
+          <router-link to="/checkout"  :event="cart.carts.length !== 0 ? 'click' : ''" :disabled="cart.carts.length === 0">
+            <button class="btn btn-primary float-right" :disabled="cart.carts.length === 0">
               前往結帳
-            </button></router-link>
+            </button></router-link
+          >
         </div>
       </div>
     </div>
   </div>
 </template>
-<style scoped>
-.custom-font-size {
-  font-size: 1rem;
-}
-</style>
 <script>
 import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
       coupon_code: "",
+      windowWidth: window.innerWidth
     };
   },
   methods: {
@@ -208,5 +182,10 @@ export default {
   computed: {
     ...mapGetters(["cart"]),
   },
+ mounted() {
+        window.onresize = () => {
+            this.windowWidth = window.innerWidth
+        }
+    }
 };
 </script>

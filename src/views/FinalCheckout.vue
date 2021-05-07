@@ -1,6 +1,6 @@
 <template>
-  <div >
-    <div class="container py-4">
+  <div class="pt-4 pb-5">
+    <div class="container ">
       <section class="row text-center">
         <div class="col-md-4 col-sm-12">
           <div
@@ -42,7 +42,7 @@
             <table class="table p-5">
               <tbody>
                 <tr>
-                  <th class="border-0">下單日期</th>
+                  <th class="border-0 ">下單日期</th>
                   <td class="border-0">{{ order.create_at | date }}</td>
                 </tr>
                 <tr>
@@ -58,7 +58,7 @@
                   <td>{{ order.user.name }}</td>
                 </tr>
                 <tr>
-                  <th width="120">收件人電話</th>
+                  <th width="120" class="text-nowrap">收件人電話</th>
                   <td>{{ order.user.tel }}</td>
                 </tr>
                 <tr>

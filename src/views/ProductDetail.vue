@@ -91,7 +91,6 @@
               <hooper :itemsToShow="4"
                 :wheelControl="false"
                 style="height: 430px"
-                :centerMode="false"
                 class="row justify-content-center mt-4 mb-5">
                 <slide v-for="(item, index) in filterSlideData" :key="index">
                   <div class="card shadow-sm rounded-0   ml-3" >
@@ -188,6 +187,7 @@ export default {
     //取得單一 商品細節
     getProductDetail(singleProductId) {
       this.$store.dispatch("getProductDetail", singleProductId);
+
     },
     addToCart(id, qty = 1) {
       //qty =1代表未傳入qty的話就會預設傳1

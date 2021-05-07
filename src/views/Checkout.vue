@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="container py-4">
+  <div class="pt-4 pb-5">
+    <div class="container ">
       <section class="row text-center">
         <div class="col-md-4 col-sm-12">
           <div class="alert alert-primary alert-rounded mb-0" role="alert">
