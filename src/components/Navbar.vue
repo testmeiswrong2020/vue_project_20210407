@@ -91,9 +91,6 @@
                               }}</span>
                               <br />
                               <span>{{ item.qty }}{{ item.product.unit }}</span>
-                              <!-- <div class="text-success" v-if="item.coupon">
-                                已套用優惠券
-                              </div> -->
                             </td>
                             <td class="align-middle text-right text-success">
                               {{ item.final_total | currency }}

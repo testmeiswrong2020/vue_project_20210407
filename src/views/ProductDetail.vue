@@ -71,8 +71,9 @@
               </table>
             </div>
         </div>
-        <div class="col-md-12 col-sm-12 col-lg-12">
-          <div class="my-5" v-if="filterSlideData.length > 0">
+        <div class="col-md-12 col-sm-12 col-lg-12 mt-5">
+          <div  v-if="filterSlideData.length > 0">
+            <!--可能也喜歡--start-->
             <div class="row row-cols-md-3 row-cols-sm-1">
               <div class="col-md-5 col-3">
                 <div class="border border-primary"></div>
@@ -86,8 +87,8 @@
                 <div class="border border-primary"></div>
               </div>
             </div>
-
-              <!--        hooper---start---       -->
+            <!--可能也喜歡--end-->
+            <!--hooper---start-->
               <hooper :itemsToShow="4"
                 :wheelControl="false"
                 style="height: 430px"
@@ -115,7 +116,7 @@
                             </span>
                           </div>
                           <div class="d-flex justify-content-between mt-n1">
-                            <h6 class="text-capitalize custom-font-size">
+                            <h6 class="text-capitalize custom-font-size pt-1">
                               {{ item.title }}
                             </h6>
                             <span class="price"  v-if="item.origin_price>item.price">特價 {{ item.price | currency }}</span>

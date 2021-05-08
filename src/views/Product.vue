@@ -226,7 +226,7 @@
                         </span>
                       </div>
                       <div class="d-flex justify-content-between mt-n1">
-                        <h3 class="text-capitalize">{{ item.title }}</h3>
+                        <h3 class="text-capitalize pt-1">{{ item.title }}</h3>
                         <span
                           class="price"
                           v-if="item.origin_price != item.price"
