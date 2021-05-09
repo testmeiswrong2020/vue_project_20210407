@@ -88,9 +88,10 @@
               </div>
             </div>
             <!--可能也喜歡--end-->
+
             <!--hooper---start-->
-              <hooper :itemsToShow="4"
-                :wheelControl="false"
+            <div class="ml-2">
+              <hooper  :settings="hooperSettings"
                 style="height: 430px"
                 class="row justify-content-center mt-4 mb-5">
                 <slide v-for="(item, index) in filterSlideData" :key="index">
@@ -128,6 +129,7 @@
                 </slide>
                 <hooper-navigation slot="hooper-addons"></hooper-navigation>
               </hooper>
+              </div>
               <!--        hooper---end---       -->
            
           </div>
@@ -150,23 +152,20 @@
 }
 .hooper-prev{
   border-radius: 4px;
-      color: #fff;
       padding: 15px 9px;
-      margin-left:9px;
       border-color: lightgray;
-    position: absolute;
-    z-index: 100;
+      position: absolute;
+      z-index: 100;
       background-color: lightgray;
-    // background-color: rgba(36,36,36,.3);
 }
 .hooper-next{
       padding: 15px 9px;
-  border-radius: 4px;
-    position: absolute;
-    z-index: 100;
-    background-color: lightgray;
-    margin-right: -20px;
-    // background-color: rgba(36,36,36,.3);
+      border-radius: 4px;
+      position: absolute;
+      z-index: 100;
+      border-color: lightgray;
+      background-color: lightgray;
+      margin-right: -20px;
 }
 </style>
 
@@ -181,6 +180,23 @@ export default {
         loadingItem_addToCart: false,
       },
       productdetailcontent: {},
+      hooperSettings: {
+                    wheelControl: false,
+                    breakpoints: {
+                       1400: {
+                            itemsToShow: 4
+                        },
+                        1100: {
+                            itemsToShow: 3
+                        },
+                        768: {
+                            itemsToShow: 2
+                        },
+                        480: {
+                            itemsToShow: 1
+                        },
+                    }
+                }, 
     };
   },
   methods: {
