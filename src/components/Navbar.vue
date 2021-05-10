@@ -23,13 +23,13 @@
           <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
               <router-link to="/product">
-                <li class="nav-item">商品</li>
+                <li class="nav-item" @click="hideCollapese">商品</li>
               </router-link>
               <router-link to="/promotion">
-                <li class="nav-item">最新消息</li>
+                <li class="nav-item" @click="hideCollapese">最新消息</li>
               </router-link>
               <router-link to="/contact"
-                ><li class="nav-item">門市位置</li>
+                ><li class="nav-item" @click="hideCollapese">門市位置</li>
               </router-link>
               <li class="nav-item">
                 <div class="dropdown ml-auto pr-2">
@@ -131,13 +131,19 @@
 </template>
 <script>
 import { mapGetters, mapActions } from "vuex";
+import $ from 'jquery';
+
 export default {
   methods: {
+    ...mapActions(["getCart"]),
     //移除購物車內容
     removeCartItem(product_id) {
       this.$store.dispatch("removeCartItem", product_id);
     },
-    ...mapActions(["getCart"]),
+         hideCollapese(){
+      $(".navbar-collapse").removeClass("show");
+    },
+
   },
   computed: {
     ...mapGetters(["cart"]),
