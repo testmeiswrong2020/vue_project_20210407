@@ -1,6 +1,6 @@
 <template>
   <div>
-    <!-- <news-overlay></news-overlay> -->
+    <news-overlay></news-overlay>
     <h1 class="m-0 text-hide">Enya Design</h1>
     <div class="position-relative">
       <!--        carousel section        -->
@@ -190,7 +190,7 @@
 // 自訂元件
 import IntroduceCompanySection from "../components/IntroduceCompanySection";
 import ImgWall from "../components/ImgWall";
-// import NewsOverlay from '../components/NewsOverlay'
+import NewsOverlay from '../components/NewsOverlay'
 import HomeProducts from "../components/HomeProducts";
 // 外部元件、插件
 import { Carousel, Slide } from "vue-carousel";
@@ -231,7 +231,7 @@ export default {
     Slide,
     IntroduceCompanySection,
     ImgWall,
-    // NewsOverlay,
+    NewsOverlay,
     HomeProducts,
   },
 };

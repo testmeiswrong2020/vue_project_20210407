@@ -139,7 +139,7 @@
   </div>
 </template>
 
-<style  lang="scss">
+<style  lang="scss" >
 .table th {
   font-weight: bold;
   width: 8.5vw;
@@ -216,7 +216,7 @@ export default {
       };
       vm.status.loadingItem_addToCart = true;
       this.$http.post(url, { data: cart }).then((response) => {
-        console.log("addToCart", response.data);
+        // console.log("addToCart", response.data);
         if (response.data.success) {
           vm.$bus.$emit("message:push", response.data.message, "success");
           vm.$store.dispatch("getCart");

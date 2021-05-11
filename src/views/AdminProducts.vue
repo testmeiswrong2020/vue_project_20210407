@@ -285,10 +285,7 @@ import $ from "jquery";
 import AdminSidebar from "../components/AdminSidebar.vue";
 export default {
     components: {
-    // navBar,
     AdminSidebar,
-    // footerContent,
-    // Alert,
   },
   data() {
     return {
@@ -316,7 +313,7 @@ export default {
       const vm = this;
       vm.isLoading = true; //顯示loading
       this.$http.get(api).then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         vm.products = response.data.products;
         vm.isLoading = false; //隱藏loading
         vm.pagination = response.data.pagination;
@@ -395,7 +392,7 @@ export default {
           headers: { "Content-Type": "multipart / form - data" },
         })
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           if (response.data.success) {
             vm.$set(vm.tempProduct, "imageUrl", response.data.imageUrl); //強制寫回post回傳資料      
           } else {

@@ -93,8 +93,6 @@
 </template>
 
 <script>
-import $ from "jquery";
-
 export default {
   data() {
     return {
@@ -118,20 +116,6 @@ export default {
       });
     },
   },
-  //     computed: {
-  //     sortOrder() {
-  //       const vm = this;
-  //       let newOrder = [];
-  //       if (vm.orders.length) {
-  //         newOrder = vm.orders.sort((a, b) => {
-  //           const aIsPaid = a.is_paid ? 1 : 0;
-  //           const bIsPaid = b.is_paid ? 1 : 0;
-  //           return bIsPaid - aIsPaid;
-  //         });
-  //       }
-  //       return newOrder;
-  //     },
-  //   },
   created() {
     this.getOrders();
   },

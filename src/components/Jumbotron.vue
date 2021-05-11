@@ -10,7 +10,7 @@
     </div>
   </div>
 </template>
-<style scoped>
+<style >
 .custom-font-size{
       font-size: 2rem;
 }

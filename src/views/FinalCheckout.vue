@@ -112,7 +112,7 @@ export default {
       const vm = this;
       const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/order/${vm.orderId}`;
       this.$http.get(url).then((response) => {
-        console.log("getOneOrder", response.data);
+        // console.log("getOneOrder", response.data);
         if (response.data.success) {
           vm.order = response.data.order;
         } else {
@@ -123,12 +123,10 @@ export default {
     payOrder() {
       const vm = this;
       const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/pay/${vm.orderId}`;
-      //   const order = vm.form;
       vm.$store.dispatch("updateLoading", true);
       this.$http.post(url).then((response) => {
-        console.log("payOrder", response.data);
+        // console.log("payOrder", response.data);
         if (response.data.success) {
-          // vm.order.is_paid=true;
           vm.getOneOrder();
         } else {
           this.$bus.$emit("message:push", response.data.message, "danger");

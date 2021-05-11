@@ -204,7 +204,7 @@
     </div>
   </div>
 </template>
-<style scoped>
+<style >
 .custom-font-size {
   font-size: 1rem;
 }
@@ -214,8 +214,6 @@ import { mapGetters, mapActions } from "vuex";
 export default {
   data() {
     return {
-      //      products: [],
-      // product: {},
       form: {
         user: {
           name: "",
