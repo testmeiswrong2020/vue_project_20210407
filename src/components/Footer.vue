@@ -4,10 +4,10 @@
 		   <div class="col-md-12 col-sm-12  col-lg-12 ">
              <div class="d-flex  justify-content-around  pb-3">
               <ul class="nav">
-                <router-link to="/product" > <li class="nav-link"> 購買商品  </li></router-link>
-                <router-link to="/common-question"><li class="nav-link">常見問題</li></router-link>
-                <router-link to="/contact"> <li  class="nav-link">門市位置 </li></router-link>
-                <router-link to="/term-of-use">  <li  class="nav-link">使用條款 </li></router-link>
+                <router-link to="/product" > <li class="nav-link mx-md-8 mx-sm-3"> 購買商品  </li></router-link>
+                <router-link to="/common-question"><li class="nav-link mx-md-8 mx-sm-3">常見問題</li></router-link>
+                <router-link to="/contact"> <li  class="nav-link mx-md-8 mx-sm-3">門市位置 </li></router-link>
+                <router-link to="/term-of-use">  <li  class="nav-link mx-md-8 mx-sm-3">使用條款 </li></router-link>
               </ul>
 		     </div>
 	         <div class="row copyright">
