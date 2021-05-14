@@ -14,10 +14,10 @@
 				<div class="col-md-12 text-center">
 					<p>
 						<ul class="fh5co-social-icons">
-						<li><a href="#"><i  class="fab fa-twitter"></i></a></li>
-							<li><a href="#"><i class="fab fa-facebook-square"></i></a></li>
-							<li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-							<li><a href="#"><i class="fab fa-instagram-square"></i></a></li>
+						<li><a :href="`${url}`"><i  class="fab fa-twitter"></i></a></li>
+							<li><a :href="`${url}`"><i class="fab fa-facebook-square"></i></a></li>
+							<li><a :href="`${url}`"><i class="fab fa-linkedin"></i></a></li>
+							<li><a :href="`${url}`"><i class="fab fa-instagram-square"></i></a></li>
 						</ul>
 					</p>
 					<p><small class="block mb-2 mt-n2">僅供學習使用，不做為商業用途</small>
@@ -30,3 +30,12 @@
 		 </div>
 	</footer>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      url: "https://github.com/testmeiswrong2020/vue_project_20210407",
+    };
+  },
+};
+</script>
