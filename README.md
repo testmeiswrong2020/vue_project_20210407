@@ -3,7 +3,7 @@
 
 ## Demo
 * 前台
- ![](https://images.unsplash.com/photo-1590736701530-f9e57920dd6f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bHV4dXJ5JTIwYmFnfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60)
+ ![](https://github.com/testmeiswrong2020/vue_project_20210407/blob/main/public/images/category_2.jpg?raw=true)
 * 後台
 
 ## 簡介
