@@ -1,7 +1,5 @@
 <template>
   <div>
-    <!--在此插入loading特效-->
-    <loading :active.sync="isLoading"></loading>
     <AdminSidebar/>
     <div class="mt-4">
       <button class="btn float-right mb-3 btn-primary" @click="openModal(true)">
@@ -11,7 +9,7 @@
     <table class="table mt-4">
       <thead>
         <tr>
-          <th width="120">分類</th>
+          <th width="150">分類</th>
           <th>產品名稱</th>
           <th width="120">原價</th>
           <th width="120">售價</th>
@@ -49,7 +47,7 @@
       </tbody>
     </table>
     <!--pagination-->
-    <nav aria-label="...">
+    <nav v-if="pagination!==undefined">
       <ul class="pagination">
         <li class="page-item " :class="{'disabled':!pagination.has_pre}">
           <span class="page-link" @click.prevent="getProducts(pagination.current_page-1)">Previous</span>
@@ -75,9 +73,7 @@
         <div class="modal-content border-0">
           <div class="modal-header bg-dark text-white">
             <h5 class="modal-title" id="productModalLabel">
-              <span
-                ><span>{{ addOrUpdate }}</span
-                >產品</span
+              <span class="text-white"><span >{{ addOrUpdate }}</span>產品</span
               >
             </h5>
             <button
@@ -86,7 +82,7 @@
               data-dismiss="modal"
               aria-label="Close"
             >
-              <span aria-hidden="true">&times;</span>
+              <span aria-hidden="true" class="text-white">&times;</span>
             </button>
           </div>
           <div class="modal-body">
@@ -296,7 +292,6 @@ export default {
       isNew: false,
       //此項用來改變 modal title
       addOrUpdate: "",
-      isLoading: false,
       status: {
         fileUploading: false,
       },
@@ -311,11 +306,11 @@ export default {
     getProducts(page=1) {
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/products?page=${page}`;
       const vm = this;
-      vm.isLoading = true; //顯示loading
+         vm.$store.dispatch("updateLoading", true); //顯示loading
       this.$http.get(api).then((response) => {
         // console.log(response.data);
         vm.products = response.data.products;
-        vm.isLoading = false; //隱藏loading
+           vm.$store.dispatch("updateLoading", false);//隱藏loading
         vm.pagination = response.data.pagination;
       });
     },

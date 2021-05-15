@@ -102,8 +102,8 @@
     >
       <div class="modal-dialog" role="document">
         <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">
+          <div class="modal-header bg-dark ">
+            <h5 class="modal-title text-white" id="exampleModalLabel">
               {{ addOrUpdate }}優惠券
             </h5>
             <button
@@ -112,7 +112,7 @@
               data-dismiss="modal"
               aria-label="Close"
             >
-              <span aria-hidden="true">&times;</span>
+              <span aria-hidden="true" class="text-white">&times;</span>
             </button>
           </div>
           <div class="modal-body">
@@ -196,7 +196,6 @@ export default {
   data() {
     return {
       coupons: [],
-      isLoading: false,
       isNew: false,
       tempCoupon: {
         title: "",
@@ -222,11 +221,11 @@ export default {
     getCoupon(page = 1) {
       const vm = this;
       const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupons?page=${page}`;
-      vm.isLoading = true;
+      vm.$store.dispatch("updateLoading", true);
       this.$http.get(url).then((response) => {
-        console.log("getCoupon", response.data);
+        // console.log("getCoupon", response.data);
         vm.coupons = response.data.coupons;
-        vm.isLoading = false;
+          vm.$store.dispatch("updateLoading", false);
       });
     },
     openCouponModal(isNew, item, isDel) {
@@ -269,26 +268,26 @@ export default {
         api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon/${vm.tempCoupon.id}`;
         httpMethod = "put";
       }
-      vm.isLoading = true;
+      vm.$store.dispatch("updateLoading", true);
       //因為資料上送時是以物件形式，故 vm.tempCoupon 資料要用物件包起來
       this.$http[httpMethod](api, { data: vm.tempCoupon }).then((response) => {
-        console.log("updateCoupon", response.data);
+        // console.log("updateCoupon", response.data);
         if (response.data.success) {
           vm.getCoupon();
         } else {
           this.$bus.$emit("message:push", response.data.message, "danger");
         }
-        vm.isLoading = false;
+        vm.$store.dispatch("updateLoading", false);
         $("#couponModal").modal("hide");
       });
     },
     delCoupon() {
       const vm = this;
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/coupon/${vm.tempCoupon.id}`;
-      vm.isLoading = true;
+      vm.$store.dispatch("updateLoading", true);
       this.$http.delete(api, { data: vm.tempCoupon }).then((response) => {
-        console.log("delCoupon", response.data);
-        vm.isLoading = false;
+        // console.log("delCoupon", response.data);
+        vm.$store.dispatch("updateLoading", false);
         $("#delModal").modal("hide");
         if (response.data.success) {
           vm.getCoupon();

@@ -12,13 +12,13 @@ export default new VueRouter({
     {
       //網頁路徑亂輸入的話，一律導到login畫面
       path: '*',
-      redirect: 'home'
+      redirect: '/home'
     },
 
     //登入後畫面router
     {
       path: '/admin',
-      redirect: 'login',
+      redirect: '/login',
       name: 'Dashboard',
       component: () => import('./components/Dashboard.vue'),
       //使用children來製作巢狀router
@@ -56,7 +56,7 @@ export default new VueRouter({
         //登入前畫面router
     {
       path: '/',
-      redirect: 'home',
+      redirect: '/home',
       name: 'Index',
       component: () => import('./views/Index.vue'),
       children: [

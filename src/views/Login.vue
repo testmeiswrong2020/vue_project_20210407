@@ -1,7 +1,7 @@
 <template>
   <div>
-    <form class="form-signin" @submit.prevent="signin">
-      <h1 class="h3 mb-3 font-weight-normal">請先登入</h1>
+    <form class="form-signin mt-4" @submit.prevent="signin">
+      <h1 class="h3 mb-3 font-weight-normal text-center">請先登入</h1>
       <label for="inputEmail" class="sr-only">Email address</label>
       <input
         type="email"
@@ -17,26 +17,20 @@
         type="password"
         id="inputPassword"
         v-model="user.password"
-        class="form-control"
+        class="form-control mt-1"
         placeholder="Password"
         required
       />
-      <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" value="remember-me" /> Remember me
-        </label>
-      </div>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
-        Sign in
+      
+      <button class="btn btn mt-3 btn-primary btn-block" type="submit">
+      登入
       </button>
-      <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
     </form>
   </div>
 </template>
 
 <script>
 export default {
-  name: "HelloWorld",
   data() {
     return {
       user: {
@@ -53,10 +47,10 @@ export default {
         //console.log(response.data);
         if (response.data.success) {
           //寫入cookie
-          const token=response.data.token;
-          const expired=response.data.expired;
+          const token = response.data.token;
+          const expired = response.data.expired;
           // console.log(token,expired);
-          document.cookie=`hexToken=${token};expires=${new Date(expired)};`;
+          document.cookie = `hexToken=${token};expires=${new Date(expired)};`;
           vm.$router.push("/admin/admin-products");
         }
       });
@@ -66,7 +60,7 @@ export default {
 </script>
 
 
-<style >
+<style lang="scss" scoped>
 html,
 body {
   height: 100%;

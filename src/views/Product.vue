@@ -327,7 +327,7 @@ export default {
       };
       vm.status.loadingItem_addToCart = id;
       this.$http.post(url, { data: cart }).then((response) => {
-        console.log("addToCart", response.data);
+        // console.log("addToCart", response.data);
         if (response.data.success) {
           vm.$bus.$emit("message:push", response.data.message, "success");
           vm.$store.dispatch("getCart");

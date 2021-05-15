@@ -61,7 +61,6 @@ router.beforeEach((to, from, next) => {
     const api = `${process.env.VUE_APP_APIPATH}/api/user/check`; //此Api用於 檢查用戶是否仍持續登入
     //因為this.$http只能用在元件內，現在是在router內，故改成用axios
     axios.post(api).then((response) => {
-      // console.log(response.data);
       if (response.data.success) {
         //回覆true則放行
         next();
