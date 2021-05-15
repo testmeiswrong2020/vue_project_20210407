@@ -169,7 +169,7 @@ export default {
       };
       vm.$store.dispatch("updateLoading", true);
       this.$http.post(url, { data: coupon }).then((response) => {
-        console.log("addCouponCode", response.data);
+        // console.log("addCouponCode", response.data);
         if (response.data.success) {
           vm.getCart();
         } else {

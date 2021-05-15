@@ -234,7 +234,7 @@ export default {
       const order = vm.form;
       vm.$store.dispatch("updateLoading", true);
       this.$http.post(url, { data: order }).then((response) => {
-        console.log("createOrder", response.data);
+        // console.log("createOrder", response.data);
         if (response.data.success) {
           vm.$router.push(`/final-checkout/${response.data.orderId}`);
            vm.$store.dispatch("getCart");
