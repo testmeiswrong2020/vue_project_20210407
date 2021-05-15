@@ -3,6 +3,7 @@
 
 ## Demo
 * 前台
+ ![](C:\Users\ME\Documents\vue_project_20210404\public\images\category_2.jpg)
 * 後台
 
 ## 簡介
