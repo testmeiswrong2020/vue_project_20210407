@@ -11,6 +11,7 @@
 ![](https://github.com/testmeiswrong2020/vue_project_20210407/blob/main/public/img/backendPicForGithub1.jpg?raw=true)
 
 
+
 ## 簡介
 此作品為 Vue.js 前端練習，主要功能有以下:
 * 前台
