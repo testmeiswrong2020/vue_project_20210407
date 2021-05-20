@@ -3,6 +3,7 @@
 
 
 ## Demo
+https://testmeiswrong2020.github.io/vue_project_20210407/#/product
 * 前台
 ![](https://github.com/testmeiswrong2020/vue_project_20210407/blob/master/public/img/frontEndPicForGithub.jpg?raw=true)
 ![](https://github.com/testmeiswrong2020/vue_project_20210407/blob/master/public/img/frontEndPicForGithub1.jpg?raw=true)
