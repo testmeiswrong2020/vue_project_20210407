@@ -15,9 +15,9 @@
               <h5>門市位置</h5>
               <h6 class="mt-n3">110 台北市信義區忠孝東路五段22a號</h6>
               <h5>電話</h5>
-              <h6 class="mt-n3">+886 227621177</h6>
+              <h6 class="mt-n3"><a href="tel://+886227621177">+886 227621177</a></h6>
               <h5>電子信箱</h5>
-              <h6 class="mt-n3">info@yoursite.com</h6>
+              <h6 class="mt-n3"><a href="mailto:enya-boutique@yoursite.com">enya-boutique@yoursite.com</a></h6>
               <h5>營業時間</h5>
               <h6 class="mt-n3">周一~周五 9 AM to 5 PM</h6>
             </div>

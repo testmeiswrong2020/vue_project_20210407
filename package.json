@@ -9,10 +9,10 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
     "axios": "^0.21.1",
-    "bootstrap": "^4.3.1",
+    "bootstrap": "^4.6.0",
     "core-js": "^2.6.5",
-    "css-loader": "^5.2.0",
-    "eslint": "^7.23.0",
+    "css-loader": "^5.2.5",
+    "eslint": "^7.26.0",
     "hooper": "^0.3.4",
     "jquery": "^3.6.0",
     "node-sass": "^5.0.0",
@@ -28,7 +28,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.12.0",
     "@vue/cli-service": "^3.12.0",
-    "sass-loader": "^10.1.1",
+    "sass-loader": "^10.2.0",
     "vue-template-compiler": "^2.6.10"
   },
   "postcss": {
