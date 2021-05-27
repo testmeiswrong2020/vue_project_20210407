@@ -3,10 +3,12 @@
 
 
 ## Demo
-* 前台
+> https://testmeiswrong2020.github.io/vue_project_20210407/#/product
+
+* 前台部分畫面
 ![](https://github.com/testmeiswrong2020/vue_project_20210407/blob/master/public/img/frontEndPicForGithub.jpg?raw=true)
 ![](https://github.com/testmeiswrong2020/vue_project_20210407/blob/master/public/img/frontEndPicForGithub1.jpg?raw=true)
-* 後台
+* 後台部分畫面
 ![](https://github.com/testmeiswrong2020/vue_project_20210407/blob/master/public/img/backendPicForGithub.jpg?raw=true)
 ![](https://github.com/testmeiswrong2020/vue_project_20210407/blob/master/public/img/backendPicForGithub1.jpg?raw=true)
 
