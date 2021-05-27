@@ -4,14 +4,14 @@
 		   <div class="col-md-12 col-sm-12  col-lg-12 ">
              <div class="d-flex  justify-content-around  pb-3">
               <ul class="nav">
-                <router-link to="/product" > <li class="nav-link mx-md-8 mx-sm-3"> 購買商品  </li></router-link>
-                <router-link to="/common-question"><li class="nav-link mx-md-8 mx-sm-3">常見問題</li></router-link>
-                <router-link to="/contact"> <li  class="nav-link mx-md-8 mx-sm-3">門市位置 </li></router-link>
-                <router-link to="/term-of-use">  <li  class="nav-link mx-md-8 mx-sm-3">使用條款 </li></router-link>
+                <router-link to="/product" > <li class="nav-link mx-sm-2 mx-md-5"> 購買商品  </li></router-link>
+                <router-link to="/common-question"><li class="nav-link mx-sm-2 mx-md-5">常見問題</li></router-link>
+                <router-link to="/contact"> <li  class="nav-link mx-sm-2 mx-md-5">門市位置 </li></router-link>
+                <router-link to="/term-of-use">  <li  class="nav-link mx-sm-2 mx-md-5">使用條款 </li></router-link>
               </ul>
 		     </div>
 	         <div class="row copyright">
-				<div class="col-md-12 text-center">
+				<div class="col-md-12  text-center">
 					<p>
 						<ul class="fh5co-social-icons">
 						<li><a :href="`${url}`"><i  class="fab fa-twitter"></i></a></li>

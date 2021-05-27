@@ -17,12 +17,12 @@
                     class="card-header p-0 border-0 bg-white"
                   >
                     <h5 class="mb-0">
-                      <button
+                      <button 
                         data-toggle="collapse"
                         data-target="#ProductsCollapseOne"
-                        class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1"
-                      >
-                        精品包 <span class="h8">HANDBAG</span>
+                        class="btn  text-nowrap btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1"
+                      >精品包
+                         <span class="h8"> HANDBAG</span>
                       </button>
                     </h5>
                   </div>
@@ -60,7 +60,7 @@
                       <button
                         data-toggle="collapse"
                         data-target="#ProductsCollapseTwo"
-                        class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1"
+                        class="btn text-nowrap btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1"
                       >
                         腕錶
                         <span class="h8">WATCH</span>
@@ -102,7 +102,7 @@
                       <button
                         data-toggle="collapse"
                         data-target="#ProductsCollapseThree"
-                        class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1"
+                        class="btn text-nowrap btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1"
                       >
                         珠寶
                         <span class="h8">JEWELRY</span>
@@ -143,7 +143,7 @@
                       <button
                         data-toggle="collapse"
                         data-target="#ProductsCollapseFour"
-                        class="btn btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1"
+                        class="btn text-nowrap btn-link dropdown-toggle h7 mb-0 pl-md-3 pr-md-1"
                       >
                         鞋履
                         <span class="h8">SHOE</span>
@@ -209,14 +209,14 @@
                     </div>
                   </div>
                   <div class="product mt-n3">
-                    <div class="desc mx-3">
+                    <div class="desc px-3">
                       <div class="d-flex justify-content-between">
                         <h3
                           class="text-capitalize badge-outline badge badge-primary badge-pill"
                         >
                           {{ item.category }}
                         </h3>
-                        <span class="price">
+                        <span class="price text-nowrap">
                           <div v-if="item.origin_price === item.price">
                             原價 {{ item.origin_price | currency }}
                           </div>
@@ -228,7 +228,7 @@
                       <div class="d-flex justify-content-between mt-n1">
                         <h3 class="text-capitalize pt-1">{{ item.title }}</h3>
                         <span
-                          class="price"
+                          class="price text-nowrap"
                           v-if="item.origin_price != item.price"
                           >特價 {{ item.price | currency }}</span
                         >
