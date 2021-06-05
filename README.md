@@ -2,7 +2,7 @@
 >歡迎大家蒞臨，這份作品是以 Vue.js 練習製作販售二手精品的電商網站（VueCli3+Vuex）
 
 
-## Demo
+## Demo 連結
 > https://testmeiswrong2020.github.io/vue_project_20210407/#/product
 
 * 前台部分畫面
