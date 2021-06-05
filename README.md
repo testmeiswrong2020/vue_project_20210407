@@ -38,7 +38,7 @@
 * VueRouter
 * VueComponents
 * API串接
-* RWD
+* Bootstrap RWD
 * Bootstrap 4.6.0
 * jQuery
 * JavaScript(ES6)
