@@ -32,7 +32,7 @@ import App from './App.vue';
 import './bus';
 import currencyFilter from './filters/currency.js';
 import dateFilter from './filters/date.js';
-import store from './store';
+import store from './store.js';
 
 Vue.config.productionTip = false;
 Vue.use(VueAxios, axios);
