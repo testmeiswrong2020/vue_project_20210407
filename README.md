@@ -2,7 +2,7 @@
 >歡迎大家蒞臨，這份作品是以 Vue.js 練習製作販售二手精品的電商網站（VueCli3+Vuex）
 
 
-## Demo
+## Demo 連結
 > https://testmeiswrong2020.github.io/vue_project_20210407/#/product
 
 * 前台部分畫面
@@ -19,7 +19,7 @@
   1. 產品展示(商品分類展示、單一商品介紹、相似商品陳列)
   1. 購物車
   1. 優惠卷
-  1. 結帳/下單
+  1. 結帳/下單 (未串接真正金流故可實際測試、訂單資訊欄位目前僅做必輸擋控)
   1. 門市位置
   1. 網站使用條款
   1. 常見問題
@@ -33,12 +33,12 @@
 
 
 ## 使用到的技術
-* Vue Cli 3
+* Vue Cli 
 * Vuex
 * VueRouter
 * VueComponents
 * API串接
-* RWD
+* Bootstrap RWD
 * Bootstrap 4.6.0
 * jQuery
 * JavaScript(ES6)
