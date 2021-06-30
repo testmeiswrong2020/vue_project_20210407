@@ -272,10 +272,12 @@ export default {
       //因為資料上送時是以物件形式，故 vm.tempCoupon 資料要用物件包起來
       this.$http[httpMethod](api, { data: vm.tempCoupon }).then((response) => {
         // console.log("updateCoupon", response.data);
+        let message=response.data.message;
         if (response.data.success) {
           vm.getCoupon();
+          vm.$store.dispatch('updateMessage', { message });
         } else {
-          this.$bus.$emit("message:push", response.data.message, "danger");
+          vm.$store.dispatch('updateMessage', { message, status: 'danger' });
         }
         vm.$store.dispatch("updateLoading", false);
         $("#couponModal").modal("hide");
@@ -289,10 +291,12 @@ export default {
         // console.log("delCoupon", response.data);
         vm.$store.dispatch("updateLoading", false);
         $("#delModal").modal("hide");
+        let message=response.data.message;
         if (response.data.success) {
           vm.getCoupon();
+          vm.$store.dispatch('updateMessage', { message});      
         } else {
-          this.$bus.$emit("message:push", response.data.message, "danger");
+          vm.$store.dispatch('updateMessage', { message, status: 'danger' });
         }
       });
     },

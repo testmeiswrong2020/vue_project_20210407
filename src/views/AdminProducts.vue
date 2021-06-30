@@ -349,10 +349,12 @@ export default {
       this.$http[httpMethod](api, { data: vm.tempProduct }).then((response) => {
         // console.log(response.data);
         $("#productModal").modal("hide");
+        let message= response.data.message;
         if (response.data.success) {
           vm.getProducts();
+          vm.$store.dispatch('updateMessage', { message });   
         } else {
-          this.$bus.$emit("message:push", response.data.message, "danger");
+          vm.$store.dispatch('updateMessage', { message, status: 'danger' });
         }
       });
     },
@@ -364,11 +366,13 @@ export default {
       const api = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/product/${vm.tempProduct.id}`;
       this.$http.delete(api, { data: vm.tempProduct }).then((response) => {
         // console.log(response.data);
-        $("#delProductModal").modal("hide");
+          $("#delProductModal").modal("hide");
+          let message=response.data.message;
         if (response.data.success) {
           vm.getProducts();
+          vm.$store.dispatch('updateMessage', { message });
         } else {
-          this.$bus.$emit("message:push", response.data.message, "danger");
+          vm.$store.dispatch('updateMessage', { message, status: 'danger' });
         }
       });
     },
@@ -382,16 +386,16 @@ export default {
       formData.append("file-to-upload", uploadedFile);
       const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/admin/upload`;
       vm.status.fileUploading = true; //上傳前loading icon開始轉
-      this.$http
-        .post(url, formData, {
-          headers: { "Content-Type": "multipart / form - data" },
+      this.$http.post(url, formData, {
+      headers: { "Content-Type": "multipart / form - data" },
         })
         .then((response) => {
           // console.log(response.data);
           if (response.data.success) {
             vm.$set(vm.tempProduct, "imageUrl", response.data.imageUrl); //強制寫回post回傳資料      
           } else {
-            this.$bus.$emit("message:push", response.data.message, "danger");      
+            let message="圖片上傳失敗 !!";
+            vm.$store.dispatch('updateMessage', { message, status: 'danger' });   
           }
             vm.status.fileUploading = false; //上傳後loading icon 消失
         });
