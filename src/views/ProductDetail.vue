@@ -41,7 +41,7 @@
                   <i
                     :class="{
                       'fas fa-spinner fa-spin':
-                        status.loadingItem_addToCart === true,
+                        loadingaddtocart === productdetail.id,
                     }"
                   ></i>
                   加到購物車
@@ -176,9 +176,6 @@ import "hooper/dist/hooper.css";
 export default {
   data() {
     return {
-      status: {
-        loadingItem_addToCart: false,
-      },
       productdetailcontent: {},
       hooperSettings: {
                     wheelControl: false,
@@ -204,27 +201,9 @@ export default {
     //取得單一 商品細節
     getProductDetail(singleProductId) {
       this.$store.dispatch("getProductDetail", singleProductId);
-
     },
     addToCart(id, qty = 1) {
-      //qty =1代表未傳入qty的話就會預設傳1
-      const vm = this;
-      const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`;
-      const cart = {
-        product_id: id,
-        qty,
-      };
-      vm.status.loadingItem_addToCart = true;
-      this.$http.post(url, { data: cart }).then((response) => {
-        // console.log("addToCart", response.data);
-        if (response.data.success) {
-          vm.$bus.$emit("message:push", response.data.message, "success");
-          vm.$store.dispatch("getCart");
-        } else {
-          vm.$bus.$emit("message:push", response.data.message, "danger");
-        }
-        vm.status.loadingItem_addToCart = false;
-      });
+      this.$store.dispatch("addToCart", id, qty);
     },
   },
   components: {
@@ -233,7 +212,7 @@ export default {
     HooperNavigation,
   },
   computed: {
-    ...mapGetters(["productdetail", "products"]),
+    ...mapGetters(["productdetail", "products","loadingaddtocart"]),
     filterProductDetailContent() {
       const vm = this;
       var vv = vm.productdetail.content;
@@ -273,9 +252,7 @@ export default {
             }
           }
         });
-        // console.log("iijij",filterSlideData.length);
       }
-
       return filterSlideData;
     },
   },

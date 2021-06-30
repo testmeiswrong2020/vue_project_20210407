@@ -240,10 +240,10 @@
                           @click.prevent="addToCart(item.id)"
                           class="btn btn-primary rounded btn-sm mb-3 mt-1"
                         >
-                          <i
+                          <i 
                             :class="{
                               'fas fa-spinner fa-spin':
-                                status.loadingItem_addToCart === item.id,
+                                loadingaddtocart === item.id,
                             }"
                           ></i>
                           加入購物車
@@ -304,38 +304,14 @@ export default {
   },
   data() {
     return {
-      status: {
-        loadingItem_addToCart: "s",
-      },
       currentPage: 0,
       page: 1,
     };
   },
-
   methods: {
-    /**
-     * 讀取產品資料
-     * */
     ...mapActions(["getProducts"]),
     addToCart(id, qty = 1) {
-      //qty =1代表未傳入qty的話就會預設傳1
-      const vm = this;
-      const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`;
-      const cart = {
-        product_id: id,
-        qty,
-      };
-      vm.status.loadingItem_addToCart = id;
-      this.$http.post(url, { data: cart }).then((response) => {
-        // console.log("addToCart", response.data);
-        if (response.data.success) {
-          vm.$bus.$emit("message:push", response.data.message, "success");
-          vm.$store.dispatch("getCart");
-        } else {
-          vm.$bus.$emit("message:push", response.data.message, "danger");
-        }
-        vm.status.loadingItem_addToCart = "s";
-      });
+      this.$store.dispatch("addToCart", id, qty);
     },
     //顯示 全系列文案
     showDifferentJumbotron(chosedindex) {
@@ -345,7 +321,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["brands", "products"]),
+    ...mapGetters(["brands", "products","loadingaddtocart"]),
     filterData() {
       const vm = this;
       //先過濾資料後才處理後面的分頁

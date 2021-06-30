@@ -29,7 +29,6 @@ import VueCarousel from 'vue-carousel';
 
 import router from './router';
 import App from './App.vue';
-import './bus';
 import currencyFilter from './filters/currency.js';
 import dateFilter from './filters/date.js';
 import store from './store.js';
