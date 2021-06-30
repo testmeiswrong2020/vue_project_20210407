@@ -6,8 +6,11 @@ import axios from 'axios';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  // strict: true,
   state: {  //等於data
+    messages: [],
     isLoading: false,
+    loadingaddtocart: 's',
     products: [],
     productdetail: [],
     brands: [],
@@ -20,6 +23,9 @@ export default new Vuex.Store({
   actions: { //等於method
     updateLoading(context, status) {
       context.commit('LOADING', status);
+    },
+    updateLoadingAddToCart(context, status) {
+      context.commit('LOADINGADDTOCART', status);
     },
     //取得產品
     getProducts(context) {
@@ -63,6 +69,25 @@ export default new Vuex.Store({
         console.log(error);
       });;
     },
+    //加入購物車
+    addToCart(context, id, qty = '1') {//qty =1代表未傳入qty的話就會預設傳1
+      const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart`;
+      const cart = {
+        product_id: id,
+        qty,
+      };
+      context.commit('LOADINGADDTOCART', id);
+      axios.post(url, { data: cart }).then((response) => {
+        let message = response.data.message;
+        if (response.data.success) {
+          context.dispatch("getCart");
+          context.dispatch('updateMessage', { message });
+        } else {
+          context.dispatch('updateMessage', { message, status: 'danger' });
+        }
+        context.commit('LOADINGADDTOCART', 's');
+      });
+    },
     //移除購物車內容
     removeCartItem(context, id) {
       const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/cart/${id}`;
@@ -88,13 +113,43 @@ export default new Vuex.Store({
           console.log(error);
         });
     },
-    showDifferentJumbotron(context,chosedindex){
-      context.commit('CHOSEDINDEX',chosedindex);
-      },
+    showDifferentJumbotron(context, chosedindex) {
+      context.commit('CHOSEDINDEX', chosedindex);
+    },
+    updateMessage(context, { message, status = 'success' }) { 
+      const timestamp = Math.floor(new Date() / 1000);
+      // console.log('Alert:', message, status);
+      context.commit('MESSAGES', { message, status, timestamp });
+      context.dispatch('removeMessageWithTiming', timestamp);
+    },
+    removeMessage(context, num) {
+      context.commit('REMOVEMESSAGE', num);
+    },
+    removeMessageWithTiming(context, timestamp) {
+      setTimeout(() => {
+        context.commit('REMOVEMESSAGEWITHTIMING', timestamp);
+      }, 5000);
+    },
   },
-  mutations: {
+  mutations: { 
     LOADING(state, status) {
       state.isLoading = status;
+    },
+    LOADINGADDTOCART(state, payload) {
+      state.loadingaddtocart = payload;
+    },
+    MESSAGES(state, payload) {
+      state.messages.push(payload);
+    },
+    REMOVEMESSAGE (state, num) {
+      state.messages.splice(num, 1);
+    },
+    REMOVEMESSAGEWITHTIMING(state, timestamp) {
+      state.messages.forEach((item, i) => {
+        if (item.timestamp === timestamp) {
+          state.messages.splice(i, 1);
+        }
+      });
     },
     //儲存資料得行為放到mustation裡面
     PRODUCTS(state, payload) {
@@ -120,12 +175,13 @@ export default new Vuex.Store({
     products(state) {
       return state.products;
     },
+    loadingaddtocart(state) {
+      return state.loadingaddtocart;
+    },
     productdetail(state) {
       return state.productdetail;
     },
     chosedindex(state) {
-      // let titlePOS = $('.page-link').text();
-      // console.log("titlePOS",titlePOS);
       return state.chosedindex;
     },
     brands(state) {
@@ -160,7 +216,6 @@ export default new Vuex.Store({
       });
       combined2 = [categories_1, categories_2, categories_3, categories_4];
       state.brands = Array.from(combined2);
-      //
       return state.brands;
     },
     // pagination(state) {
