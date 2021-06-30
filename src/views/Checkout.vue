@@ -235,12 +235,13 @@ export default {
       vm.$store.dispatch("updateLoading", true);
       this.$http.post(url, { data: order }).then((response) => {
         // console.log("createOrder", response.data);
+        let message=response.data.message;
         if (response.data.success) {
-          vm.$router.push(`/final-checkout/${response.data.orderId}`);
+           vm.$router.push(`/final-checkout/${response.data.orderId}`);
            vm.$store.dispatch("getCart");
-          //  this.$bus.$emit("message:push", response.data.message, "success");
+           vm.$store.dispatch('updateMessage', { message});
         } else {
-          this.$bus.$emit("message:push", response.data.message, "danger");
+           vm.$store.dispatch('updateMessage', { message, status: 'danger' });
         }
         vm.$store.dispatch("updateLoading", false);
       });

@@ -165,15 +165,16 @@ export default {
       const vm = this;
       const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/coupon`;
       const coupon = {
-        code: vm.coupon_code.trim(),
+        code: vm.coupon_code.toUpperCase().trim(),//轉大寫後除空白
       };
       vm.$store.dispatch("updateLoading", true);
       this.$http.post(url, { data: coupon }).then((response) => {
         // console.log("addCouponCode", response.data);
+        let message= response.data.message;
         if (response.data.success) {
           vm.getCart();
         } else {
-          this.$bus.$emit("message:push", response.data.message, "danger");
+          vm.$store.dispatch('updateMessage', { message, status: 'danger' });
         }
         vm.$store.dispatch("updateLoading", false);
       });

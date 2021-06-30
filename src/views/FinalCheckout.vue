@@ -113,10 +113,11 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/order/${vm.orderId}`;
       this.$http.get(url).then((response) => {
         // console.log("getOneOrder", response.data);
-        if (response.data.success) {
+        if (response.data.success) { //此API沒有吐message
           vm.order = response.data.order;
         } else {
-          this.$bus.$emit("message:push", response.data.message, "danger");
+           let message= "讀取訂單失敗 !!";
+          vm.$store.dispatch('updateMessage', { message, status: 'danger' });
         }
       });
     },
@@ -126,10 +127,12 @@ export default {
       vm.$store.dispatch("updateLoading", true);
       this.$http.post(url).then((response) => {
         // console.log("payOrder", response.data);
+        let message= response.data.message;
         if (response.data.success) {
           vm.getOneOrder();
+          vm.$store.dispatch('updateMessage', { message});
         } else {
-          this.$bus.$emit("message:push", response.data.message, "danger");
+          vm.$store.dispatch('updateMessage', { message, status: 'danger' });
         }
         vm.$store.dispatch("updateLoading", false);
       });
