@@ -3,7 +3,7 @@
 
 
 ## Demo 連結
-> https://testmeiswrong2020.github.io/vue_project_20210407/#/product
+> https://testmeiswrong2020.github.io/vue_project_20210407/#/home
 
 * 前台部分畫面
 ![](https://github.com/testmeiswrong2020/vue_project_20210407/blob/master/public/img/frontEndPicForGithub.jpg?raw=true)
@@ -33,7 +33,7 @@
 
 
 ## 使用到的技術
-* Vue Cli 
+* Vue Cli 3
 * Vuex
 * VueRouter
 * VueComponents
