@@ -233,13 +233,13 @@ export default {
       const url = `${process.env.VUE_APP_APIPATH}/api/${process.env.VUE_APP_CUSTOMPATH}/order`;
       const order = vm.form;
       vm.$store.dispatch("updateLoading", true);
-      this.$http.post(url, { data: order }).then((response) => {
+      vm.$http.post(url, { data: order }).then((response) => {
         // console.log("createOrder", response.data);
         let message=response.data.message;
         if (response.data.success) {
            vm.$router.push(`/final-checkout/${response.data.orderId}`);
            vm.$store.dispatch("getCart");
-           vm.$store.dispatch('updateMessage', { message});
+           vm.$store.dispatch('updateMessage', { message});//feedback建立訂單訊息 
         } else {
            vm.$store.dispatch('updateMessage', { message, status: 'danger' });
         }
