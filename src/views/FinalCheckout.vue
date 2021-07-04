@@ -2,7 +2,7 @@
   <div class="pt-4 pb-5">
     <div class="container ">
       <section class="row text-center">
-        <div class="col-md-4 col-sm-12">
+        <div class="col-md-4 col-lg-4 col-sm-12 ">
           <div
             class="alert alert-light custom-alert alert-rounded mb-2"
             role="alert"
@@ -10,7 +10,7 @@
             1.輸入訂單資料
           </div>
         </div>
-        <div class="col-md-4 col-sm-12">
+        <div class="col-md-4 col-sm-12 col-lg-4">
            <div v-if="order.is_paid" class="alert  alert-light custom-alert  alert-rounded mb-2" role="alert">
             2.金流付款
           </div>
@@ -18,7 +18,7 @@
             2.金流付款
           </div>
         </div>
-        <div class="col-md-4 col-sm-12">
+        <div class="col-md-4 col-sm-12 col-lg-4">
           <div
             v-if="order.is_paid"
             class="alert alert-primary alert-rounded mb-2"
@@ -37,8 +37,8 @@
       </section>
 
       <div class="mb-5 mt-4 row justify-content-center">
-        <div class="card col-md-6 shadow mx-3">
-          <form @submit.prevent="payOrder">
+        <div class="card col-md-6 col-lg-6 col-sm-6 shadow mx-3">
+          <form @submit.prevent="payOrder" class="text-break">
             <table class="table p-5">
               <tbody>
                 <tr>
@@ -95,8 +95,6 @@
 </style>
 
 <script>
-import $ from "jquery";
-
 export default {
   data() {
     return {

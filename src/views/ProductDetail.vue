@@ -2,7 +2,7 @@
   <div>
     <div class="container-fluid pdPage">
       <div class="row mt-4 mx-2">
-        <div class="col-md-8">
+        <div class="col-sm-8 col-md-8 col-lg-8">
         <div class="pdPage-imgSection">
           <div class="pdPage-img shadow-lg">
             <a class="backwardBtn text-dark" @click.prevent="$router.go(-1)">Back</a>
@@ -10,7 +10,7 @@
           </div>
         </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-sm-4 col-md-4 col-lg-4">
             <div class="row">
               <div
                 class="col-md-12 col-sm-12 col-xs-12 col-lg-12 align-self-center"
@@ -117,10 +117,10 @@
                             </span>
                           </div>
                           <div class="d-flex justify-content-between mt-n1">
-                            <h6 class="text-capitalize custom-font-size pt-1">
+                            <h6 class="text-capitalize custom-font-size pt-1 text-nowrap">
                               {{ item.title }}
                             </h6>
-                            <span class="price"  v-if="item.origin_price>item.price">特價 {{ item.price | currency }}</span>
+                            <span class="price text-nowrap"  v-if="item.origin_price>item.price">特價 {{ item.price | currency }}</span>
                           </div>
                         </div>
                       </div>
@@ -139,7 +139,7 @@
   </div>
 </template>
 
-<style  lang="scss" >
+<style  lang="scss" scoped>
 .table th {
   font-weight: bold;
   width: 8.5vw;

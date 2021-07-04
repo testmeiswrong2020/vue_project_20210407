@@ -2,7 +2,7 @@
   <div id="fh5co-contact">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-sm-8">
+        <div class="col-sm-8 col-lg-8 col-md-8">
           <div class="text-center h3 text-muted border-bottom pb-3">
             <i class="fas fa-ticket-alt"></i> 優惠活動
           </div>

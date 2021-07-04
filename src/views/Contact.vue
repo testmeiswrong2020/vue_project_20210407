@@ -3,10 +3,10 @@
     <div id="fh5co-contact">
       <div class="container">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6 col-lg-6">
             <div><img class="img-fluid" src="images/contact.jpg" /></div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 col-lg-6">
             <div class="fh5co-contact-info text-center mt-2">
               <h3>
                 <i class="fas fa-phone-square-alt fa-lg mr-3"></i>聯絡我們
