@@ -33,7 +33,7 @@
 
 
 ## 使用到的技術
-* Vue Cli 3
+* Vue Cli 
 * Vuex
 * VueRouter
 * VueComponents
