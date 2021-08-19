@@ -312,7 +312,6 @@ export default {
     ...mapActions(["getProducts"]),
     addToCart(id, qty = 1) {
       this.$store.dispatch("addToCart", id, qty);
-      console.log("werwer");
     },
     //顯示 全系列文案
     showDifferentJumbotron(chosedindex) {
