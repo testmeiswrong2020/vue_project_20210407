@@ -1,8 +1,8 @@
 # Enya Boutique 二手精品網
 >歡迎大家蒞臨 Enya Boutique 二手精品網。
->此作品為以 Vue.js 製作販售二手精品的電商網站個人作品。
->作品用到的API & DB資源來源為外訓課程。
->作品無版權問題，原因是網站使用之圖片皆來自unsplash (免版權圖片網站)
+!此作品為以 Vue.js 製作販售二手精品的電商網站個人作品。
+!作品用到的API & DB資源來源為外訓課程。
+!作品無版權問題，原因是網站使用之圖片皆來自unsplash (免版權圖片網站)
 
 ## Demo 連結
 > https://testmeiswrong2020.github.io/vue_project_20210407/#/home
