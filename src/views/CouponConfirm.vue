@@ -173,6 +173,7 @@ export default {
         let message= response.data.message;
         if (response.data.success) {
           vm.getCart();
+          vm.$store.dispatch('updateMessage', { message });
         } else {
           vm.$store.dispatch('updateMessage', { message, status: 'danger' });
         }

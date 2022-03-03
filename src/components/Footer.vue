@@ -20,10 +20,10 @@
 							<li><a :href="`${url}`"><i class="fab fa-instagram-square"></i></a></li>
 						</ul>
 					</p>
-					<p><small class="block mb-2 mt-n2">僅供學習使用，不做為商業用途</small>
-						<small class="block">Copyright &copy; 2021 安雅. 版權所有.</small> 
-            			</p>
-				
+					<p><small class="block mt-n2">網站僅供學習之用，不做任何商業用途</small>
+					   <small class="block">&copy; 2021 Enya 版權所有</small>
+					   <small>網站圖片來源 : Unsplash 免版權圖片網</small>
+            		</p>				
 				</div>
 			 </div>
 		   </div>
