@@ -3,6 +3,7 @@
 >此網站用於展示本人使用Vue.js 製作網站前端之成果。    
 >網站使用到的API & DB資源來源為外訓課程。  
 >網站內之圖片皆來自unsplash (免版權圖片網站)，故無版權問題。  
+>網站未串接金流僅模擬下訂單操作步驟，可自由試操作下訂流程。
 
 ## Demo 連結
 > https://testmeiswrong2020.github.io/vue_project_20210407/#/home
