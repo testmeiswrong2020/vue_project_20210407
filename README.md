@@ -3,6 +3,7 @@
 * 網站使用到的API & DB資源來源為 外訓課程。  
 * 網站內之圖片皆來自 unsplash (免版權圖片網站)。  
 * 網站未串接金流僅模擬下訂步驟，可自行測試下訂流程至付款完成。
+* 此作品支援RWD
 
 ## Demo 連結
 > https://testmeiswrong2020.github.io/vue_project_20210407/#/home
