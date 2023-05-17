@@ -22,10 +22,10 @@
           <div class="Volkhov counpon-subtitle-bottom m-sm-0 my-2 font-weight-bold ">Opening Promotion</div>
           <div class="Ubuntu mt-sm-4">WITH THE CODE</div>
           <div class="Ubuntu">SS10</div>
-          <div class="row justify-content-center">
+          <div class="row justify-content-center ">
             <div class="col-md-5">
               <button
-                class="btn btn-sm btn-outline-primary mt-sm-4 mt-2"
+                class="btn btn-sm btn-outline-primary mt-sm-5 mb-n4"
                 type="button"
                 @click="delOverlay"
               >SHOP NOW</button>
