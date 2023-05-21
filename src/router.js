@@ -8,7 +8,7 @@ Vue.use(VueRouter);
 
 //設定頁面路徑
 export default new VueRouter({
-  mode: 'history',
+  // mode: 'history',
   routes: [
     {
       //網頁路徑亂輸入的話，一律導到login畫面
