@@ -11,7 +11,7 @@ module.exports = {
         // 創建實例 (第三步)
         new PrerenderSPAPlugin({
           staticDir: path.join(__dirname, 'dist'),
-          routes: [ '/vue_project_20210407/','/'],
+          routes: [ '/','/home'],
           renderer: new Renderer({
             renderAfterDocumentEvent: 'render-event',
           }),
