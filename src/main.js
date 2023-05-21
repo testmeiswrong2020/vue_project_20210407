@@ -51,12 +51,9 @@ new Vue({
   router,
   store,
   el: '#app',
-  render: h => h(App),
-  // mounted() {
-  //   document.dispatchEvent(new Event('render-event'));
-  // },
+  render: h => h(App)
 })
-// .$mount('#app');
+
 
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
